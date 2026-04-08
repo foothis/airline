@@ -7,395 +7,365 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════
-       STATUS BAR (simulated iOS/Android)
-  ═══════════════════════════════════════════════ -->
-  <div class="status-bar">
-    <span class="status-time" id="status-time">9:41</span>
-    <div class="status-icons">
-      <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="white" opacity="0.4"/><rect x="4.5" y="2" width="3" height="10" rx="1" fill="white" opacity="0.6"/><rect x="9" y="0.5" width="3" height="11.5" rx="1" fill="white"/><rect x="13.5" y="0" width="3" height="12" rx="1" fill="white" opacity="0.3"/></svg>
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 2.4C10.2 2.4 12.2 3.3 13.6 4.8L15 3.3C13.2 1.3 10.7 0 8 0C5.3 0 2.8 1.3 1 3.3L2.4 4.8C3.8 3.3 5.8 2.4 8 2.4Z" fill="white" opacity="0.4"/><path d="M8 5.6C9.4 5.6 10.7 6.2 11.6 7.2L13 5.7C11.7 4.3 9.9 3.4 8 3.4C6.1 3.4 4.3 4.3 3 5.7L4.4 7.2C5.3 6.2 6.6 5.6 8 5.6Z" fill="white" opacity="0.7"/><circle cx="8" cy="10" r="2" fill="white"/></svg>
-      <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="2" y="2" width="16" height="8" rx="2" fill="white"/><path d="M23 4.5V7.5C23.8 7.2 24.5 6.5 24.5 6C24.5 5.5 23.8 4.8 23 4.5Z" fill="white" opacity="0.4"/></svg>
-    </div>
-  </div>
+  <div class="status-bar"></div>
 
   <!-- ═══════════════════════════════════════════════
        MAIN APP WRAPPER
   ═══════════════════════════════════════════════ -->
   <div class="app-wrapper">
 
-    <!-- TOP NAV -->
-    <header class="top-nav">
-      <div class="top-nav-left">
-        <div class="passenger-avatar">E</div>
-        <div class="passenger-points">
-          <span class="points-value">24,850</span>
-          <span class="points-label"> Points</span>
-        </div>
-      </div>
-      <div class="sas-logo">
-        <svg viewBox="0 0 52 20" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-          <text x="0" y="17" font-family="Inter, sans-serif" font-size="18" font-weight="800" fill="white" letter-spacing="1">SAS</text>
-        </svg>
-      </div>
-      <button class="lang-toggle" id="lang-toggle" onclick="SAS_APP.toggleLang()">
-        <span id="lang-flag">🇬🇧</span><span id="lang-code">EN</span>
-      </button>
-    </header>
-
     <!-- ═══ SCREEN: HOME ═══ -->
     <main class="screen screen--home is-active" id="screen-home">
 
-      <!-- Hero -->
+      <!-- HERO — full bleed destination photo with gradient overlay -->
       <div class="home-hero">
-        <div class="hero-text">
-          <div class="hero-name">Erik,</div>
-          <div class="hero-welcome">WELCOME BACK</div>
-        </div>
-        <div class="hero-plane">
-          <!-- SAS plane silhouette -->
-          <svg viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="plane-svg">
-            <!-- Fuselage -->
-            <path d="M20 60 Q60 55 140 52 Q200 50 260 48 L265 52 Q210 58 140 60 Q80 62 30 68 Z" fill="rgba(255,255,255,0.25)"/>
-            <!-- Main wing -->
-            <path d="M100 54 L160 30 L170 34 L120 56 Z" fill="rgba(255,255,255,0.35)"/>
-            <path d="M100 56 L160 80 L170 76 L120 58 Z" fill="rgba(255,255,255,0.2)"/>
-            <!-- Tail -->
-            <path d="M240 50 L260 35 L265 38 L250 52 Z" fill="rgba(255,255,255,0.3)"/>
-            <!-- Windows -->
-            <ellipse cx="150" cy="54" rx="3" ry="2" fill="rgba(255,255,255,0.6)"/>
-            <ellipse cx="163" cy="53" rx="3" ry="2" fill="rgba(255,255,255,0.6)"/>
-            <ellipse cx="176" cy="52" rx="3" ry="2" fill="rgba(255,255,255,0.6)"/>
-            <ellipse cx="189" cy="51" rx="3" ry="2" fill="rgba(255,255,255,0.6)"/>
-            <ellipse cx="202" cy="51" rx="3" ry="2" fill="rgba(255,255,255,0.6)"/>
-          </svg>
-        </div>
-        <!-- Search widget -->
-        <div class="search-widget">
-          <div class="search-widget-row">
-            <div class="sw-field">
-              <div class="sw-label">From</div>
-              <div class="sw-value">ARN <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle"><path d="M5 17.5L19 6.5M19 6.5H13M19 6.5V12.5" stroke="#000099" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="sw-city">Stockholm</div>
+
+        <!-- Floating top bar over hero -->
+        <div class="home-top-bar">
+          <div class="htb-left">
+            <div class="passenger-avatar">E</div>
+            <div class="passenger-points">
+              <span class="points-value">24 850</span>
+              <span class="points-label"> Points</span>
             </div>
-            <button class="sw-swap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16" stroke="#000099" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="sw-field sw-field--right">
-              <div class="sw-label">To</div>
-              <div class="sw-value sw-value--search">SEARCH</div>
-              <div class="sw-city">Destination</div>
-            </div>
+          </div>
+          <button class="lang-toggle" id="lang-toggle" onclick="SAS_APP.toggleLang()">
+            <span id="lang-flag">🇬🇧</span><span id="lang-code">EN</span>
+          </button>
+        </div>
+
+        <!-- Hero copy -->
+        <div class="hero-content">
+          <div class="hero-eyebrow">Discover the world with SAS</div>
+          <div class="hero-headline">New<br>Destinations</div>
+          <div class="hero-sub">Travel between April 29 – Oct 31</div>
+          <button class="hero-cta">Book by April 14</button>
+        </div>
+      </div>
+
+      <!-- SEARCH WIDGET — dark two-panel -->
+      <div class="search-widget">
+        <div class="sw-panel sw-panel--from">
+          <div class="sw-panel-label">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            From
+          </div>
+          <div class="sw-panel-value">ARN</div>
+          <div class="sw-panel-city">Stockholm</div>
+        </div>
+        <button class="sw-swap-btn" aria-label="Swap">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="sw-panel sw-panel--to">
+          <div class="sw-panel-label">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 12H3M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            To
+          </div>
+          <div class="sw-panel-value sw-panel-value--search">
+            <svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px;vertical-align:middle;margin-right:4px"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Search
+          </div>
+          <div class="sw-panel-city">Destination</div>
+        </div>
+      </div>
+
+      <!-- OFFERS SECTION -->
+      <div class="section">
+        <div class="section-label">Offers right now</div>
+        <div class="section-sublabel">Stockholm, one way, including taxes and fees</div>
+      </div>
+
+      <!-- Offer card -->
+      <div class="offer-card">
+        <div class="offer-card-img"></div>
+        <div class="offer-card-body">
+          <div class="offer-card-eyebrow">Find the lowest fares</div>
+          <div class="offer-card-headline">for your next trip</div>
+        </div>
+      </div>
+
+      <!-- Destination deals strip -->
+      <div class="deals-strip">
+        <div class="deal-item">
+          <div class="deal-img deal-img--barcelona"></div>
+          <div class="deal-info">
+            <div class="deal-city">Barcelona</div>
+            <div class="deal-type">One way</div>
+            <div class="deal-price">Fr. 1 890 SEK</div>
+          </div>
+        </div>
+        <div class="deal-item">
+          <div class="deal-img deal-img--london"></div>
+          <div class="deal-info">
+            <div class="deal-city">London</div>
+            <div class="deal-type">One way</div>
+            <div class="deal-price">Fr. 2 150 SEK</div>
+          </div>
+        </div>
+        <div class="deal-item">
+          <div class="deal-img deal-img--oslo"></div>
+          <div class="deal-info">
+            <div class="deal-city">Oslo</div>
+            <div class="deal-type">One way</div>
+            <div class="deal-price">Fr. 690 SEK</div>
           </div>
         </div>
       </div>
 
-      <!-- Upcoming trip card -->
-      <section class="section">
-        <div class="section-header">
-          <span class="section-title">Upcoming Trip</span>
-          <a class="section-link" href="#">View all</a>
-        </div>
-        <div class="trip-card trip-card--upcoming" id="upcoming-trip-card">
-          <div class="trip-route">
-            <div class="trip-city">
-              <div class="trip-code">ARN</div>
-              <div class="trip-name">Stockholm</div>
-            </div>
-            <div class="trip-arrow-wrap">
-              <div class="trip-flight-line"></div>
-              <svg class="trip-plane" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L7 12L2 17L12 22L22 17L17 12L22 7L12 2Z" fill="#000099"/></svg>
-            </div>
-            <div class="trip-city">
-              <div class="trip-code">CPH</div>
-              <div class="trip-name">Copenhagen</div>
-            </div>
+      <!-- Holidays promo -->
+      <div class="holidays-card">
+        <div class="holidays-card-img"></div>
+        <div class="holidays-card-text">
+          <div class="holidays-brand">
+            <svg viewBox="0 0 114 40" fill="white" height="22" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30.8065 0C37.2845 0 40.5227 1.70852 41.7012 2.277C42.4376 2.70528 42.2897 3.27376 42.2897 3.27376L41.6688 5.91588C41.6178 6.12394 41.5792 6.33487 41.5533 6.54753C41.407 6.83254 41.1127 6.83254 40.8169 6.54753L39.489 5.78339C37.8637 4.90371 35.9427 4.12879 33.3099 4.12879C29.3353 4.12879 27.2725 6.97581 28.3031 11.1031L29.018 13.7267C29.8408 16.8669 30.6393 20.0134 31.4135 23.1659L31.6908 24.3414C33.4562 31.4589 28.451 40 14.9066 40C7.39804 40 2.68708 37.2947 1.06643 36.0145C0.183701 35.3027 -0.110542 34.8744 0.0358092 34.4477L0.479484 33.0365C0.778348 32.1152 1.13267 31.0954 1.21432 31.1739C1.21432 30.6039 1.50856 30.4622 1.80281 30.7472L2.48064 31.3819C4.25688 32.9841 8.01579 35.8712 12.9917 35.8712C19.3233 35.8712 18.8812 30.8889 18.8812 30.1772C18.8812 28.1852 16.2315 18.3623 15.4951 15.8003C13.4339 7.54429 18.587 0 30.8065 0ZM102.505 0C108.983 0 112.221 1.70852 113.399 2.277C114.136 2.70528 113.988 3.27376 113.988 3.27376L113.369 5.91588C113.317 6.12394 113.279 6.33487 113.253 6.54753C113.107 6.83254 112.812 6.83254 112.518 6.54753C110.603 5.40903 108.396 4.12879 105.01 4.12879C101.035 4.12879 98.9722 6.97581 100.003 11.1031L100.484 12.8347C101.363 16.1424 103.036 22.7469 103.389 24.3429C105.156 31.4589 100.151 40 86.6063 40C79.0978 40 74.681 37.438 73.0619 36.1562C72.3256 35.5631 71.999 35.1687 71.9943 34.8051L72.6907 31.4204C72.7138 31.3203 72.7338 31.2448 72.7461 31.2001C72.9156 30.7472 73.3562 30.6054 73.6504 30.8889L74.812 31.8995C76.7299 33.5018 80.0991 35.8712 84.6914 35.8712C91.0231 35.8712 90.5809 30.8889 90.5809 30.1772C90.5809 28.1852 87.9312 18.3623 87.1948 15.8003C85.132 7.54429 90.2851 0 102.505 0ZM74.6795 0.426745C75.0338 0.426745 75.0092 0.700971 75.0615 0.810353L75.1216 0.853489L67.4652 39.0032C67.4652 39.2174 67.382 39.2698 67.2803 39.2836L53.4786 39.2882C53.038 39.2882 53.038 39.0032 53.038 38.8615L54.6356 30.7349C54.6444 30.692 54.6516 30.6489 54.6571 30.6055L54.6186 30.5053L54.5108 30.4622H43.1724L43.0322 30.4992L42.8782 30.6055L36.106 39.0032C36.106 39.1111 36.0243 39.2174 35.7963 39.2651L35.519 39.2882H30.805C30.5862 39.2882 30.5308 39.2081 30.5785 39.0479L30.6586 38.8615L62.3121 0.711755L62.4538 0.611616C62.5854 0.537005 62.7286 0.484934 62.8774 0.457557L63.1963 0.426745H74.6795ZM58.1896 11.6731L58.0432 11.8148L46.2643 26.4767V26.6199H55.2456L58.1896 11.8148L58.2558 11.7101L58.1896 11.6731Z"/>
+            </svg>
+            <span class="holidays-brand-text">Holidays</span>
           </div>
-          <div class="trip-meta">
-            <div class="trip-meta-item">
-              <div class="trip-meta-label">Date</div>
-              <div class="trip-meta-value">Apr 15, 2026</div>
-            </div>
-            <div class="trip-meta-item">
-              <div class="trip-meta-label">Flight</div>
-              <div class="trip-meta-value">SK 425</div>
-            </div>
-            <div class="trip-meta-item">
-              <div class="trip-meta-label">Booking</div>
-              <div class="trip-meta-value">SK7234</div>
-            </div>
-          </div>
-          <div class="trip-badge trip-badge--confirmed">Confirmed</div>
+          <div class="holidays-headline">More vacation for less</div>
+          <div class="holidays-sub">Lower prices when you book flight + hotel together</div>
+          <button class="holidays-btn">Book now</button>
         </div>
-      </section>
+      </div>
 
-      <!-- Quick actions -->
-      <section class="section">
-        <div class="section-header">
-          <span class="section-title">Quick Actions</span>
-        </div>
-        <div class="quick-actions-grid">
-          <button class="quick-action">
-            <div class="quick-action-icon">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="#000099" stroke-width="1.8"/><path d="M3 10H21" stroke="#000099" stroke-width="1.8"/><path d="M8 3V7M16 3V7" stroke="#000099" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <!-- Action list rows -->
+      <div class="section" style="padding-top: 8px;">
+        <div class="action-list">
+          <div class="action-list-item">
+            <div class="action-list-icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10H21" stroke="currentColor" stroke-width="1.8"/><path d="M8 3V7M16 3V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </div>
-            <span>My Bookings</span>
-          </button>
-          <button class="quick-action">
-            <div class="quick-action-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M3 12L21 12M12 3L21 12L12 21" stroke="#000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <span>Check-in</span>
-          </button>
-          <button class="quick-action">
-            <div class="quick-action-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M9 14L4 19M4 19H8M4 19V15" stroke="#000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="3" width="11" height="14" rx="2" stroke="#000099" stroke-width="1.8"/><path d="M13 7H18M13 10H18M13 13H16" stroke="#000099" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <span>Boarding Pass</span>
-          </button>
-          <button class="quick-action">
-            <div class="quick-action-icon">
-              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#000099" stroke-width="1.8"/><path d="M12 8V12L15 15" stroke="#000099" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </div>
-            <span>Flight Status</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- Eurobonus status -->
-      <section class="section">
-        <div class="eurobonus-card">
-          <div class="eurobonus-left">
-            <div class="eurobonus-label">EuroBonus</div>
-            <div class="eurobonus-points">24,850 <span>points</span></div>
-            <div class="eurobonus-tier">Silver Member</div>
+            <span class="action-list-label">Add Booking</span>
+            <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
-          <div class="eurobonus-right">
-            <div class="eurobonus-progress-label">Next: Gold</div>
-            <div class="eurobonus-bar">
-              <div class="eurobonus-bar-fill" style="width: 62%"></div>
+          <div class="action-list-item">
+            <div class="action-list-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
             </div>
-            <div class="eurobonus-progress-text">37,500 needed</div>
+            <span class="action-list-label">Check-In</span>
+            <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="action-list-item">
+            <div class="action-list-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 17.5L19 6.5M19 6.5H13M19 6.5V12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="action-list-label">Flight Status</span>
+            <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="action-list-item">
+            <div class="action-list-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M14 9V5a3 3 0 00-6 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="2" y="9" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <span class="action-list-label">Feedback</span>
+            <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Spacer for bottom bar -->
-      <div style="height: 120px;"></div>
+      <!-- SkyTeam footer -->
+      <div class="skyteam-footer">
+        <svg viewBox="0 0 180 40" fill="none" height="28" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <path d="M12 20 Q20 10 28 20 Q20 30 12 20Z" stroke="rgba(255,255,255,0.6)" fill="none" stroke-width="1.2"/>
+          <text x="44" y="15" font-family="'Open Sans',Arial,sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.7)" letter-spacing="2">SKYTEAM</text>
+          <text x="44" y="28" font-family="'Open Sans',Arial,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" letter-spacing="0.5">Caring more about you</text>
+        </svg>
+      </div>
+
+      <div style="height: 80px;"></div>
     </main>
-
-    <!-- ═══════════════════════════════════════════════
-         OVERLAY SCREENS (driven by SIP INFO metadata)
-    ═══════════════════════════════════════════════ -->
-
-    <!-- BOOKING DETAILS CARD -->
-    <div class="overlay-card" id="card-booking">
-      <div class="overlay-handle"></div>
-      <button class="overlay-close" onclick="closeCard('card-booking')">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="overlay-scroll">
-        <div class="booking-header">
-          <div class="booking-ref-label">Booking Reference</div>
-          <div class="booking-ref" id="booking-ref">SK7234</div>
-          <div class="booking-passenger" id="booking-passenger">Erik Johansson</div>
-        </div>
-        <div class="flight-card" id="booking-outbound">
-          <div class="flight-card-label">Outbound</div>
-          <div class="flight-card-route">
-            <div class="fc-city">
-              <div class="fc-time" id="booking-dep-time">06:00</div>
-              <div class="fc-code" id="booking-dep-code">ARN</div>
-            </div>
-            <div class="fc-middle">
-              <div class="fc-duration" id="booking-duration">1h 20m</div>
-              <div class="fc-line"><div class="fc-dot"></div><div class="fc-line-bar"></div><div class="fc-dot"></div></div>
-              <div class="fc-direct">Direct</div>
-            </div>
-            <div class="fc-city">
-              <div class="fc-time" id="booking-arr-time">07:20</div>
-              <div class="fc-code" id="booking-arr-code">CPH</div>
-            </div>
-          </div>
-          <div class="flight-card-meta">
-            <span id="booking-flight-num">SK 425</span>
-            <span id="booking-date">Apr 15, 2026</span>
-            <span id="booking-class">SAS Go</span>
-          </div>
-        </div>
-        <div class="booking-details-grid">
-          <div class="bd-item">
-            <div class="bd-label">Seat</div>
-            <div class="bd-value" id="booking-seat">14C</div>
-          </div>
-          <div class="bd-item">
-            <div class="bd-label">Baggage</div>
-            <div class="bd-value" id="booking-baggage">1 x 23kg</div>
-          </div>
-          <div class="bd-item">
-            <div class="bd-label">Status</div>
-            <div class="bd-value bd-value--confirmed" id="booking-status">Confirmed</div>
-          </div>
-          <div class="bd-item">
-            <div class="bd-label">Ticket</div>
-            <div class="bd-value" id="booking-ticket">Economy</div>
-          </div>
-        </div>
-        <button class="action-btn action-btn--primary" id="booking-checkin-btn">Check In Now</button>
-        <button class="action-btn action-btn--secondary" id="booking-boarding-btn">View Boarding Pass</button>
-      </div>
-    </div>
-
-    <!-- FLIGHT SEARCH RESULTS CARD -->
-    <div class="overlay-card" id="card-flights">
-      <div class="overlay-handle"></div>
-      <button class="overlay-close" onclick="closeCard('card-flights')">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="overlay-scroll">
-        <div class="search-header">
-          <div class="search-route" id="search-route">ARN → LHR</div>
-          <div class="search-meta" id="search-meta">Mon 20 Apr · 1 passenger</div>
-        </div>
-        <div class="flight-results" id="flight-results">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-    </div>
-
-    <!-- BAGGAGE CONFIRMATION CARD -->
-    <div class="overlay-card overlay-card--compact" id="card-baggage">
-      <div class="overlay-handle"></div>
-      <button class="overlay-close" onclick="closeCard('card-baggage')">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="overlay-scroll">
-        <div class="confirmation-icon">
-          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E8F5E9"/><path d="M20 32L28 40L44 24" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="confirmation-title">Baggage Added</div>
-        <div class="confirmation-desc" id="baggage-desc">1 extra bag added to SK 425</div>
-        <div class="confirmation-ref-label">Confirmation</div>
-        <div class="confirmation-ref" id="baggage-ref">BG789012</div>
-        <div class="confirmation-amount" id="baggage-amount">399 SEK</div>
-      </div>
-    </div>
-
-    <!-- SEAT CHANGE CARD -->
-    <div class="overlay-card" id="card-seat">
-      <div class="overlay-handle"></div>
-      <button class="overlay-close" onclick="closeCard('card-seat')">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="overlay-scroll">
-        <div class="seat-header">
-          <div class="seat-header-title">Seat Updated</div>
-          <div class="seat-header-flight" id="seat-flight">SK 425 · ARN → CPH</div>
-        </div>
-        <div class="seat-map-container">
-          <div class="seat-map" id="seat-map">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-        <div class="seat-info-card">
-          <div class="seat-info-number" id="seat-number">12A</div>
-          <div class="seat-info-type" id="seat-type">Exit Row · Extra Legroom</div>
-          <div class="seat-info-features">
-            <span class="seat-feature">34" legroom</span>
-            <span class="seat-feature">Window</span>
-            <span class="seat-feature">Power outlet</span>
-          </div>
-        </div>
-        <div class="confirmation-ref-label">Confirmation</div>
-        <div class="confirmation-ref" id="seat-ref">SC123456</div>
-      </div>
-    </div>
-
-    <!-- FAQ CARD -->
-    <div class="overlay-card" id="card-faq">
-      <div class="overlay-handle"></div>
-      <button class="overlay-close" onclick="closeCard('card-faq')">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="overlay-scroll">
-        <div class="faq-header">
-          <div class="faq-category" id="faq-category">Baggage</div>
-          <div class="faq-title" id="faq-title">Baggage Allowance</div>
-        </div>
-        <div class="faq-answer" id="faq-answer">
-          <!-- Populated by JS -->
-        </div>
-        <div class="faq-related" id="faq-related">
-          <!-- Related questions -->
-        </div>
-      </div>
-    </div>
-
-    <!-- ESCALATION CARD -->
-    <div class="overlay-card overlay-card--escalation" id="card-escalation">
-      <div class="overlay-handle"></div>
-      <div class="overlay-scroll">
-        <div class="escalation-icon">
-          <div class="escalation-pulse"></div>
-          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E3F2FD"/><path d="M32 20C27.6 20 24 23.6 24 28C24 30.4 25.1 32.6 26.8 34.1L24 40H40L37.2 34.1C38.9 32.6 40 30.4 40 28C40 23.6 36.4 20 32 20Z" fill="#000099"/></svg>
-        </div>
-        <div class="escalation-title">Connecting You to an Agent</div>
-        <div class="escalation-desc" id="escalation-desc">Transferring to our premium support team</div>
-        <div class="escalation-wait">
-          <div class="escalation-wait-label">Estimated wait</div>
-          <div class="escalation-wait-time" id="escalation-wait">Under 2 minutes</div>
-        </div>
-        <div class="escalation-context">
-          <div class="escalation-context-title">Context shared with agent</div>
-          <div class="escalation-context-items" id="escalation-context">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-        <div class="escalation-connecting">
-          <div class="connecting-dot"></div>
-          <div class="connecting-dot"></div>
-          <div class="connecting-dot"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BOOKING CONFIRMATION (new flight) -->
-    <div class="overlay-card overlay-card--compact" id="card-booking-confirm">
-      <div class="overlay-handle"></div>
-      <button class="overlay-close" onclick="closeCard('card-booking-confirm')">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="overlay-scroll">
-        <div class="confirmation-icon">
-          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E8F5E9"/><path d="M20 32L28 40L44 24" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="confirmation-title">Flight Booked!</div>
-        <div class="confirmation-desc" id="confirm-desc">Your flight has been confirmed</div>
-        <div class="confirmation-ref-label">Booking Reference</div>
-        <div class="confirmation-ref" id="confirm-ref">SK0000</div>
-        <div class="confirmation-amount" id="confirm-amount"></div>
-        <button class="action-btn action-btn--primary" onclick="closeCard('card-booking-confirm')">View in My Trips</button>
-      </div>
-    </div>
 
   </div><!-- /.app-wrapper -->
 
   <!-- ═══════════════════════════════════════════════
-       BOTTOM NAV (SAS App style)
+       OVERLAY CARDS (driven by SIP INFO metadata)
+  ═══════════════════════════════════════════════ -->
+
+  <!-- BOOKING DETAILS CARD -->
+  <div class="overlay-card" id="card-booking">
+    <div class="overlay-handle"></div>
+    <button class="overlay-close" onclick="closeCard('card-booking')">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="overlay-scroll">
+      <div class="booking-header">
+        <div class="booking-ref-label">Booking Reference</div>
+        <div class="booking-ref" id="booking-ref">SK7234</div>
+        <div class="booking-passenger" id="booking-passenger">Erik Johansson</div>
+      </div>
+      <div class="flight-card" id="booking-outbound">
+        <div class="flight-card-label">Outbound</div>
+        <div class="flight-card-route">
+          <div class="fc-city">
+            <div class="fc-time" id="booking-dep-time">06:00</div>
+            <div class="fc-code" id="booking-dep-code">ARN</div>
+          </div>
+          <div class="fc-middle">
+            <div class="fc-duration" id="booking-duration">1h 20m</div>
+            <div class="fc-line"><div class="fc-dot"></div><div class="fc-line-bar"></div><div class="fc-dot"></div></div>
+            <div class="fc-direct">Direct</div>
+          </div>
+          <div class="fc-city">
+            <div class="fc-time" id="booking-arr-time">07:20</div>
+            <div class="fc-code" id="booking-arr-code">CPH</div>
+          </div>
+        </div>
+        <div class="flight-card-meta">
+          <span id="booking-flight-num">SK 425</span>
+          <span id="booking-date">Apr 15, 2026</span>
+          <span id="booking-class">SAS Go</span>
+        </div>
+      </div>
+      <div class="booking-details-grid">
+        <div class="bd-item"><div class="bd-label">Seat</div><div class="bd-value" id="booking-seat">14C</div></div>
+        <div class="bd-item"><div class="bd-label">Baggage</div><div class="bd-value" id="booking-baggage">1 x 23kg</div></div>
+        <div class="bd-item"><div class="bd-label">Status</div><div class="bd-value bd-value--confirmed" id="booking-status">Confirmed</div></div>
+        <div class="bd-item"><div class="bd-label">Ticket</div><div class="bd-value" id="booking-ticket">Economy</div></div>
+      </div>
+      <button class="action-btn action-btn--primary" id="booking-checkin-btn">Check In Now</button>
+      <button class="action-btn action-btn--secondary" id="booking-boarding-btn">View Boarding Pass</button>
+    </div>
+  </div>
+
+  <!-- FLIGHT SEARCH RESULTS CARD -->
+  <div class="overlay-card" id="card-flights">
+    <div class="overlay-handle"></div>
+    <button class="overlay-close" onclick="closeCard('card-flights')">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="overlay-scroll">
+      <div class="search-header">
+        <div class="search-route" id="search-route">ARN → LHR</div>
+        <div class="search-meta" id="search-meta">Mon 20 Apr · 1 passenger</div>
+      </div>
+      <div class="flight-results" id="flight-results"></div>
+    </div>
+  </div>
+
+  <!-- BAGGAGE CONFIRMATION CARD -->
+  <div class="overlay-card overlay-card--compact" id="card-baggage">
+    <div class="overlay-handle"></div>
+    <button class="overlay-close" onclick="closeCard('card-baggage')">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="overlay-scroll">
+      <div class="confirmation-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E8F5E9"/><path d="M20 32L28 40L44 24" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="confirmation-title">Baggage Added</div>
+      <div class="confirmation-desc" id="baggage-desc">1 extra bag added to SK 425</div>
+      <div class="confirmation-ref-label">Confirmation</div>
+      <div class="confirmation-ref" id="baggage-ref">BG789012</div>
+      <div class="confirmation-amount" id="baggage-amount">399 SEK</div>
+    </div>
+  </div>
+
+  <!-- SEAT CHANGE CARD -->
+  <div class="overlay-card" id="card-seat">
+    <div class="overlay-handle"></div>
+    <button class="overlay-close" onclick="closeCard('card-seat')">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="overlay-scroll">
+      <div class="seat-header">
+        <div class="seat-header-title">Seat Updated</div>
+        <div class="seat-header-flight" id="seat-flight">SK 425 · ARN → CPH</div>
+      </div>
+      <div class="seat-map-container"><div class="seat-map" id="seat-map"></div></div>
+      <div class="seat-info-card">
+        <div class="seat-info-number" id="seat-number">12A</div>
+        <div class="seat-info-type" id="seat-type">Exit Row · Extra Legroom</div>
+        <div class="seat-info-features">
+          <span class="seat-feature">34" legroom</span>
+          <span class="seat-feature">Window</span>
+          <span class="seat-feature">Power outlet</span>
+        </div>
+      </div>
+      <div class="confirmation-ref-label">Confirmation</div>
+      <div class="confirmation-ref" id="seat-ref">SC123456</div>
+    </div>
+  </div>
+
+  <!-- FAQ CARD -->
+  <div class="overlay-card" id="card-faq">
+    <div class="overlay-handle"></div>
+    <button class="overlay-close" onclick="closeCard('card-faq')">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="overlay-scroll">
+      <div class="faq-header">
+        <div class="faq-category" id="faq-category">Baggage</div>
+        <div class="faq-title" id="faq-title">Baggage Allowance</div>
+      </div>
+      <div class="faq-answer" id="faq-answer"></div>
+      <div class="faq-related" id="faq-related"></div>
+    </div>
+  </div>
+
+  <!-- ESCALATION CARD -->
+  <div class="overlay-card overlay-card--escalation" id="card-escalation">
+    <div class="overlay-handle"></div>
+    <div class="overlay-scroll">
+      <div class="escalation-icon">
+        <div class="escalation-pulse"></div>
+        <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E3F2FD"/><path d="M32 20C27.6 20 24 23.6 24 28C24 30.4 25.1 32.6 26.8 34.1L24 40H40L37.2 34.1C38.9 32.6 40 30.4 40 28C40 23.6 36.4 20 32 20Z" fill="#000099"/></svg>
+      </div>
+      <div class="escalation-title">Connecting You to an Agent</div>
+      <div class="escalation-desc" id="escalation-desc">Transferring to our premium support team</div>
+      <div class="escalation-wait">
+        <div class="escalation-wait-label">Estimated wait</div>
+        <div class="escalation-wait-time" id="escalation-wait">Under 2 minutes</div>
+      </div>
+      <div class="escalation-context">
+        <div class="escalation-context-title">Context shared with agent</div>
+        <div class="escalation-context-items" id="escalation-context"></div>
+      </div>
+      <div class="escalation-connecting">
+        <div class="connecting-dot"></div>
+        <div class="connecting-dot"></div>
+        <div class="connecting-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING CONFIRMATION (new flight) -->
+  <div class="overlay-card overlay-card--compact" id="card-booking-confirm">
+    <div class="overlay-handle"></div>
+    <button class="overlay-close" onclick="closeCard('card-booking-confirm')">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="overlay-scroll">
+      <div class="confirmation-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E8F5E9"/><path d="M20 32L28 40L44 24" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="confirmation-title">Flight Booked!</div>
+      <div class="confirmation-desc" id="confirm-desc">Your flight has been confirmed</div>
+      <div class="confirmation-ref-label">Booking Reference</div>
+      <div class="confirmation-ref" id="confirm-ref">SK0000</div>
+      <div class="confirmation-amount" id="confirm-amount"></div>
+      <button class="action-btn action-btn--primary" onclick="closeCard('card-booking-confirm')">View in My Trips</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       BOTTOM NAV
   ═══════════════════════════════════════════════ -->
   <nav class="bottom-nav" id="bottom-nav">
-    <button class="bottom-nav-item is-active" data-tab="home">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M3 12L12 3L21 12V21H15V15H9V21H3V12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <!-- Home: SAS wordmark logo -->
+    <button class="bottom-nav-item bottom-nav-item--home is-active" data-tab="home">
+      <span class="sas-logo-nav">
+        <svg viewBox="0 0 114 40" height="20" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M30.8065 0C37.2845 0 40.5227 1.70852 41.7012 2.277C42.4376 2.70528 42.2897 3.27376 42.2897 3.27376L41.6688 5.91588C41.6178 6.12394 41.5792 6.33487 41.5533 6.54753C41.407 6.83254 41.1127 6.83254 40.8169 6.54753L39.489 5.78339C37.8637 4.90371 35.9427 4.12879 33.3099 4.12879C29.3353 4.12879 27.2725 6.97581 28.3031 11.1031L29.018 13.7267C29.8408 16.8669 30.6393 20.0134 31.4135 23.1659L31.6908 24.3414C33.4562 31.4589 28.451 40 14.9066 40C7.39804 40 2.68708 37.2947 1.06643 36.0145C0.183701 35.3027 -0.110542 34.8744 0.0358092 34.4477L0.479484 33.0365C0.778348 32.1152 1.13267 31.0954 1.21432 31.1739C1.21432 30.6039 1.50856 30.4622 1.80281 30.7472L2.48064 31.3819C4.25688 32.9841 8.01579 35.8712 12.9917 35.8712C19.3233 35.8712 18.8812 30.8889 18.8812 30.1772C18.8812 28.1852 16.2315 18.3623 15.4951 15.8003C13.4339 7.54429 18.587 0 30.8065 0ZM102.505 0C108.983 0 112.221 1.70852 113.399 2.277C114.136 2.70528 113.988 3.27376 113.988 3.27376L113.369 5.91588C113.317 6.12394 113.279 6.33487 113.253 6.54753C113.107 6.83254 112.812 6.83254 112.518 6.54753C110.603 5.40903 108.396 4.12879 105.01 4.12879C101.035 4.12879 98.9722 6.97581 100.003 11.1031L100.484 12.8347C101.363 16.1424 103.036 22.7469 103.389 24.3429C105.156 31.4589 100.151 40 86.6063 40C79.0978 40 74.681 37.438 73.0619 36.1562C72.3256 35.5631 71.999 35.1687 71.9943 34.8051L72.6907 31.4204C72.7138 31.3203 72.7338 31.2448 72.7461 31.2001C72.9156 30.7472 73.3562 30.6054 73.6504 30.8889L74.812 31.8995C76.7299 33.5018 80.0991 35.8712 84.6914 35.8712C91.0231 35.8712 90.5809 30.8889 90.5809 30.1772C90.5809 28.1852 87.9312 18.3623 87.1948 15.8003C85.132 7.54429 90.2851 0 102.505 0ZM74.6795 0.426745C75.0338 0.426745 75.0092 0.700971 75.0615 0.810353L75.1216 0.853489L67.4652 39.0032C67.4652 39.2174 67.382 39.2698 67.2803 39.2836L53.4786 39.2882C53.038 39.2882 53.038 39.0032 53.038 38.8615L54.6356 30.7349C54.6444 30.692 54.6516 30.6489 54.6571 30.6055L54.6186 30.5053L54.5108 30.4622H43.1724L43.0322 30.4992L42.8782 30.6055L36.106 39.0032C36.106 39.1111 36.0243 39.2174 35.7963 39.2651L35.519 39.2882H30.805C30.5862 39.2882 30.5308 39.2081 30.5785 39.0479L30.6586 38.8615L62.3121 0.711755L62.4538 0.611616C62.5854 0.537005 62.7286 0.484934 62.8774 0.457557L63.1963 0.426745H74.6795ZM58.1896 11.6731L58.0432 11.8148L46.2643 26.4767V26.6199H55.2456L58.1896 11.8148L58.2558 11.7101L58.1896 11.6731Z"/>
+        </svg>
+      </span>
       <span>Home</span>
     </button>
-    <button class="bottom-nav-item" data-tab="book">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M3 12L12 5L21 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5 17.5L19 6.5M19 6.5H13M19 6.5V12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Book</span>
+
+    <!-- My trips -->
+    <button class="bottom-nav-item" data-tab="trips">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 17.5L19 6.5M19 6.5H13M19 6.5V12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>My trips</span>
     </button>
+
     <!-- Centre call button -->
     <div class="bottom-nav-call-wrap">
       <button class="bottom-nav-call" id="call-btn-start">
@@ -403,12 +373,16 @@
       </button>
       <span class="bottom-nav-call-label">Call Sarah</span>
     </div>
-    <button class="bottom-nav-item" data-tab="profile">
+
+    <!-- Me -->
+    <button class="bottom-nav-item" data-tab="me">
       <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20C4 16.686 7.582 14 12 14C16.418 14 20 16.686 20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       <span>Me</span>
     </button>
+
+    <!-- More -->
     <button class="bottom-nav-item" data-tab="more">
-      <svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 6H20M4 12H20M4 18H14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       <span>More</span>
     </button>
   </nav>
@@ -445,9 +419,7 @@
   <!-- ═══════════════════════════════════════════════
        SCRIPTS
   ═══════════════════════════════════════════════ -->
-  <!-- Cognigy Click-to-Call Widget -->
   <script src="https://github.com/Cognigy/click-to-call-widget/releases/latest/download/webRTCWidget.js"></script>
-
   <script src="js/config.js"></script>
   <script src="js/screens/booking.js"></script>
   <script src="js/screens/flights.js"></script>
