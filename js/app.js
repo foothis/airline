@@ -132,7 +132,7 @@ window.SAS_APP = (function() {
       'nav-me':              'Me',
       'nav-more':            'More',
       'points-label':        'Points',
-      'incall-name':         'Sarah · SAS AI',
+      'incall-name':         'Sarah',
     },
     sv: {
       'hero-eyebrow':        'Upptäck världen med SAS',
@@ -161,7 +161,7 @@ window.SAS_APP = (function() {
       'nav-me':              'Mig',
       'nav-more':            'Mer',
       'points-label':        'Poäng',
-      'incall-name':         'Sarah · SAS AI',
+      'incall-name':         'Sarah',
     }
   };
 

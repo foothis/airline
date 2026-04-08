@@ -188,23 +188,31 @@ window.SAS_CTC = (function () {
     } catch (e) { /* Audio not available — silent fallback */ }
   }
 
-  // Mute any <audio> elements the widget tries to play as a ringtone
+  // Silence the widget's ringtone by patching HTMLAudioElement.prototype.play.
+  // The widget calls audio.play() for its ring tone — we intercept and block it
+  // for the first 12 seconds of a call (enough for connect), then restore.
   function suppressWidgetRingtone() {
-    // Mute existing audio elements
-    document.querySelectorAll('audio').forEach(function(a) { a.muted = true; a.volume = 0; });
-    // Watch for new ones the widget might inject
-    if (window._ringtoneObserver) window._ringtoneObserver.disconnect();
-    window._ringtoneObserver = new MutationObserver(function(mutations) {
-      mutations.forEach(function(m) {
-        m.addedNodes.forEach(function(node) {
-          if (node.nodeName === 'AUDIO') { node.muted = true; node.volume = 0; }
-          if (node.querySelectorAll) node.querySelectorAll('audio').forEach(function(a) { a.muted = true; a.volume = 0; });
-        });
-      });
-    });
-    window._ringtoneObserver.observe(document.body, { childList: true, subtree: true });
-    // Stop observing after 10s (call should be connected by then)
-    setTimeout(function() { if (window._ringtoneObserver) window._ringtoneObserver.disconnect(); }, 10000);
+    // Also mute any existing audio elements immediately
+    document.querySelectorAll('audio').forEach(function(a) { a.muted = true; a.volume = 0; a.pause(); });
+
+    // Patch .play() so any audio the widget tries to start is silenced
+    if (!HTMLAudioElement.prototype._origPlay) {
+      HTMLAudioElement.prototype._origPlay = HTMLAudioElement.prototype.play;
+    }
+    HTMLAudioElement.prototype.play = function() {
+      this.muted = true;
+      this.volume = 0;
+      return HTMLAudioElement.prototype._origPlay.call(this);
+    };
+
+    // Restore after call connects (give 12s to be safe)
+    clearTimeout(window._ringtoneRestoreTimer);
+    window._ringtoneRestoreTimer = setTimeout(function() {
+      if (HTMLAudioElement.prototype._origPlay) {
+        HTMLAudioElement.prototype.play = HTMLAudioElement.prototype._origPlay;
+        delete HTMLAudioElement.prototype._origPlay;
+      }
+    }, 12000);
   }
 
   function startCall() {
