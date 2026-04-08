@@ -711,7 +711,7 @@ html, body {
 .bottom-nav-item--home.is-active .sas-logo-nav {
   color: white;
 }
-.sas-logo-nav svg { height: 20px; width: auto; }
+.sas-logo-nav svg { height: 14px; width: auto; }
 
 /* Centre call button */
 .bottom-nav-call-wrap {
