@@ -147,28 +147,43 @@ window.SAS_CTC = (function () {
 
   // ═══ CALL CONTROLS ───────────────────────────────────────────────────────
   // ═══ CABIN CHIME ─────────────────────────────────────────────────────────
-  // Classic two-note airline "ding-dong" synthesised via Web Audio API.
+  // Airport PA "bing-bong-bing" — three-note ascending chime with marimba
+  // character: layered sine + triangle oscillators, sharp percussive attack.
   function playCabinChime() {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      // Note frequencies: E5 then C5 (classic cabin chime interval)
+
+      // Bing-bong-bing: C5 → E5 → G5, each note 0.38s apart
       const notes = [
-        { freq: 659.25, start: 0,    dur: 0.55 },
-        { freq: 523.25, start: 0.45, dur: 0.75 }
+        { freq: 523.25, start: 0.0  },  // C5 — bing
+        { freq: 659.25, start: 0.38 },  // E5 — bong
+        { freq: 784.00, start: 0.76 },  // G5 — bing
       ];
+
       notes.forEach(function(n) {
-        const osc  = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(n.freq, ctx.currentTime + n.start);
-        // Gentle bell envelope: fast attack, slow decay
-        gain.gain.setValueAtTime(0, ctx.currentTime + n.start);
-        gain.gain.linearRampToValueAtTime(0.22, ctx.currentTime + n.start + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + n.start + n.dur);
-        osc.start(ctx.currentTime + n.start);
-        osc.stop(ctx.currentTime + n.start + n.dur);
+        const t = ctx.currentTime + n.start;
+
+        // Primary tone — sine wave (fundamental)
+        var osc1  = ctx.createOscillator();
+        var gain1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.value = n.freq;
+        gain1.gain.setValueAtTime(0, t);
+        gain1.gain.linearRampToValueAtTime(0.28, t + 0.008); // sharp attack
+        gain1.gain.exponentialRampToValueAtTime(0.0001, t + 1.1);
+        osc1.connect(gain1); gain1.connect(ctx.destination);
+        osc1.start(t); osc1.stop(t + 1.15);
+
+        // Second harmonic — adds marimba 'clunk' at the front
+        var osc2  = ctx.createOscillator();
+        var gain2 = ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.value = n.freq * 2.756; // inharmonic partial for wood character
+        gain2.gain.setValueAtTime(0, t);
+        gain2.gain.linearRampToValueAtTime(0.07, t + 0.005);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+        osc2.connect(gain2); gain2.connect(ctx.destination);
+        osc2.start(t); osc2.stop(t + 0.14);
       });
     } catch (e) { /* Audio not available — silent fallback */ }
   }
