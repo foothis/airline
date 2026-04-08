@@ -80,18 +80,23 @@ window.SAS_CTC = (function() {
   // Cognigy "Send Metadata" node → SIP INFO → here.
   // ═══════════════════════════════════════════════
   function handleInfoReceived(info) {
-    // Normalize across SDK versions
+    // Normalize across SDK versions and demo mode
     const raw = (info && info.info && info.info.body)
               || (info && info.body)
               || (info && typeof info === 'string' ? info : null);
 
-    if (!raw) return;
-
     let data;
-    try {
-      data = typeof raw === 'string' ? JSON.parse(raw) : raw;
-    } catch (e) {
-      console.warn('[SAS CTC] Could not parse SIP INFO body:', raw);
+    if (raw) {
+      try {
+        data = typeof raw === 'string' ? JSON.parse(raw) : raw;
+      } catch (e) {
+        console.warn('[SAS CTC] Could not parse SIP INFO body:', raw);
+        return;
+      }
+    } else if (info && info.screen) {
+      // Direct payload (demo mode / SAS_DEMO.trigger)
+      data = info;
+    } else {
       return;
     }
 
