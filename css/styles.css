@@ -251,13 +251,13 @@ html, body {
 .sw-panel-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  justify-content: space-between;
+  font-size: 13px;
   color: var(--text-secondary);
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 400;
 }
-.sw-panel-label svg { width: 16px; height: 16px; flex-shrink: 0; }
+.sw-plane-icon { width: 20px; height: 20px; flex-shrink: 0; opacity: 0.7; }
 .sw-panel-value {
   font-size: 30px;
   font-weight: 800;
