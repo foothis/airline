@@ -1,124 +1,120 @@
 /**
  * FAQ Screen
- * Triggered by: { "screen": "faq", "data": { ... } }
- *
- * Expected payload (from general_faq / Knowledge AI tool):
- * {
- *   "screen": "faq",
- *   "data": {
- *     "topic": "baggage",
- *     "title": "Baggage Allowance",
- *     "answer": "...",
- *     "related": ["Hand baggage rules", "Special items", "Excess baggage fees"]
- *   }
- * }
+ * Triggered by: { "screen": "faq", "data": { "topic": "baggage" } }
  */
 window.SAS_SCREENS = window.SAS_SCREENS || {};
 
-// Pre-built FAQ content for common topics (fallback / rich display)
 const FAQ_CONTENT = {
   baggage: {
     category: 'Baggage',
     title: 'Baggage Allowance',
     html: `
-      <p>Your baggage allowance depends on your ticket type and frequent flyer status:</p>
+      <p>Your baggage allowance depends on your ticket type:</p>
       <table class="faq-table">
         <thead><tr><th>Ticket</th><th>Cabin bag</th><th>Checked bag</th></tr></thead>
         <tbody>
-          <tr><td>SAS Go Light</td><td>1 × 8kg</td><td>Not included</td></tr>
-          <tr><td>SAS Go</td><td>1 × 8kg</td><td>1 × 23kg</td></tr>
-          <tr><td>SAS Go Smart</td><td>1 × 8kg</td><td>1 × 23kg</td></tr>
-          <tr><td>SAS Plus</td><td>2 × 8kg</td><td>2 × 23kg</td></tr>
-          <tr><td>SAS Business</td><td>2 × 8kg</td><td>2 × 32kg</td></tr>
+          <tr><td>SAS Go Light</td><td>1 × 8 kg</td><td>Not included</td></tr>
+          <tr><td>SAS Go</td><td>1 × 8 kg</td><td>1 × 23 kg</td></tr>
+          <tr><td>SAS Plus</td><td>2 × 8 kg</td><td>2 × 23 kg</td></tr>
+          <tr><td>SAS Business</td><td>2 × 8 kg</td><td>2 × 32 kg</td></tr>
         </tbody>
       </table>
-      <p>EuroBonus Gold and Diamond members receive <strong>one additional free checked bag</strong> on all fare types.</p>
-      <p>Extra bags can be added for <strong>399 SEK / 449 NOK / 399 DKK</strong> per bag when booked in advance.</p>
+      <p><strong>EuroBonus Gold and Diamond</strong> members receive one additional free checked bag on all fare types.</p>
+      <p>Extra bags can be added from <strong>399 SEK</strong> when booked in advance.</p>
     `,
-    related: ['Hand baggage dimensions', 'Special & sports equipment', 'Excess baggage fees', 'Lost baggage claims']
+    related: ['Hand baggage dimensions', 'Sports & special equipment', 'Excess baggage fees', 'Lost baggage claims']
   },
   checkin: {
     category: 'Check-in',
     title: 'Check-in Options',
     html: `
-      <p>SAS offers multiple ways to check in for your flight:</p>
-      <p><strong>Online check-in</strong> opens <strong>30 hours before departure</strong> and closes 1 hour before (international) or 40 minutes before (domestic).</p>
-      <p><strong>Mobile check-in</strong> is available via the SAS app — your boarding pass is stored in your wallet automatically.</p>
-      <p><strong>Airport check-in</strong> is available at self-service kiosks or staffed counters. Counter check-in closes 45 minutes before departure on most routes.</p>
+      <p>SAS offers multiple ways to check in:</p>
+      <p><strong>Online check-in</strong> opens <strong>30 hours before departure</strong> and closes 1 hour before. Available via the SAS app or flysas.com.</p>
+      <p><strong>Airport counters</strong> close 45 minutes before departure on European routes and 60 minutes on long-haul.</p>
+      <p><strong>Priority check-in</strong> is available for SAS Business, SAS Plus, and EuroBonus Gold and Diamond members.</p>
     `,
-    related: ['Seat selection at check-in', 'Upgrade at check-in', 'Documents required', 'Travel with children']
+    related: ['Mobile boarding pass', 'Seat selection', 'Documents required', 'Travelling with children']
   },
   eurobonus: {
     category: 'EuroBonus',
-    title: 'EuroBonus Frequent Flyer Program',
+    title: 'EuroBonus Loyalty Programme',
     html: `
-      <p>EuroBonus is the SAS frequent flyer program with four membership tiers:</p>
+      <p>EuroBonus is the SAS frequent flyer programme with four membership tiers:</p>
       <table class="faq-table">
-        <thead><tr><th>Tier</th><th>Points/year</th><th>Benefits</th></tr></thead>
+        <thead><tr><th>Tier</th><th>Points / year</th><th>Key benefits</th></tr></thead>
         <tbody>
-          <tr><td>Member</td><td>0–24,999</td><td>Base earning, partner benefits</td></tr>
-          <tr><td>Silver</td><td>25,000+</td><td>Priority boarding, lounge access (domestic)</td></tr>
-          <tr><td>Gold</td><td>50,000+</td><td>+1 free bag, Business lounge, upgrades</td></tr>
-          <tr><td>Diamond</td><td>100,000+</td><td>All Gold benefits + dedicated line</td></tr>
+          <tr><td>Member</td><td>—</td><td>Base earning</td></tr>
+          <tr><td>Silver</td><td>20,000+</td><td>Priority boarding, extra bag</td></tr>
+          <tr><td>Gold</td><td>55,000+</td><td>Lounge access, upgrades</td></tr>
+          <tr><td>Diamond</td><td>90,000+</td><td>Dedicated service line, max bonus</td></tr>
         </tbody>
       </table>
-      <p>Points can be used for <strong>award flights, upgrades, hotel stays</strong> and partner rewards across 200+ partners.</p>
+      <p>Points can be redeemed for <strong>award flights, upgrades, hotel stays</strong> and partner rewards. Points are valid for 2 years while the account is active.</p>
     `,
-    related: ['How to earn points', 'Redeem for flights', 'Partner airlines', 'Points expiry']
+    related: ['How to earn points', 'Redeem for flights', 'Star Alliance benefits', 'Points expiry']
   },
   cancellation: {
-    category: 'Booking',
-    title: 'Cancellation & Refunds',
+    category: 'Booking Changes',
+    title: 'Changes & Cancellations',
     html: `
-      <p>Cancellation and refund options depend on your ticket type:</p>
-      <p><strong>SAS Go Light:</strong> Non-refundable. Changes allowed for a fee of 350–700 SEK.</p>
-      <p><strong>SAS Go / Go Smart:</strong> Changes allowed. Refund to travel credit possible within 24 hours of booking.</p>
-      <p><strong>SAS Plus:</strong> Free changes up to 1 hour before departure. Full refund available.</p>
-      <p><strong>SAS Business:</strong> Fully flexible. Free changes and full refunds at any time.</p>
-      <p>All tickets are fully refundable if cancelled within <strong>24 hours of booking</strong>.</p>
+      <p>Your options depend on the ticket type:</p>
+      <p><strong>SAS Go Light:</strong> Non-refundable. Changes not permitted.</p>
+      <p><strong>SAS Go:</strong> Changes for a fee (approx. SEK 350–700). Non-refundable.</p>
+      <p><strong>SAS Plus:</strong> Free changes up to 24 hours before departure. Fully refundable.</p>
+      <p><strong>SAS Business:</strong> Fully flexible — free changes and full refunds up to 2 hours before departure.</p>
+      <p>If SAS cancels or delays your flight by 3+ hours, you are entitled to a full refund or free rebooking under EU Regulation 261/2004.</p>
     `,
-    related: ['Flight disruption rights', 'Travel insurance', 'Name changes', 'Vouchers and travel credit']
+    related: ['EU passenger rights', 'Travel insurance', 'Vouchers & travel credit', 'Name changes']
   },
   seat: {
-    category: 'Seat Selection',
-    title: 'Seat Selection & Upgrades',
+    category: 'Seats',
+    title: 'Seat Selection',
     html: `
-      <p>Seat selection is available from the time of booking:</p>
-      <p><strong>Standard seats</strong> are included in SAS Go Smart and above. Go and Go Light pay a selection fee.</p>
-      <p><strong>Extra Legroom seats</strong> (Exit rows, bulkhead) add approximately <strong>8–10 extra inches</strong> of legroom. Available from <strong>299 SEK</strong> per flight.</p>
-      <p><strong>SAS Plus zone</strong> seats offer a dedicated cabin with extra privacy and premium service from <strong>1,290 SEK</strong>.</p>
-      <p>EuroBonus Gold and Diamond members can select any available seat free of charge.</p>
+      <p>Seat selection availability by fare:</p>
+      <p><strong>SAS Go Light / Go:</strong> Seat assigned at check-in. Pre-selection available for a fee.</p>
+      <p><strong>SAS Plus / Business:</strong> Preferred and standard seats included at booking.</p>
+      <p><strong>Extra legroom seats</strong> (exit rows, bulkhead) available from <strong>299 SEK</strong> per flight.</p>
+      <p>Families with children under 12 are automatically seated together free of charge when booking through the SAS app or website.</p>
     `,
-    related: ['Exit row rules', 'Traveling with family', 'Upgrade bidding', 'SAS Plus benefits']
+    related: ['Exit row eligibility', 'Upgrade options', 'Family seating', 'SAS Plus cabin']
   }
 };
 
-window.SAS_SCREENS.showFAQ = function(data) {
-  const d = data || {};
-  const topic = (d.topic || 'baggage').toLowerCase();
-
-  // Use pre-built content if available, otherwise use answer from payload
-  const content = FAQ_CONTENT[topic] || {
-    category: d.category || 'Help',
-    title: d.title || 'Frequently Asked Question',
-    html: `<p>${d.answer || 'Please speak with Sarah for more details.'}</p>`,
-    related: d.related || []
-  };
+function renderFAQ(topic) {
+  const content = FAQ_CONTENT[topic] || FAQ_CONTENT['baggage'];
 
   document.getElementById('faq-category').textContent = content.category;
   document.getElementById('faq-title').textContent = content.title;
   document.getElementById('faq-answer').innerHTML = content.html;
+
+  // Update active pill
+  document.querySelectorAll('.faq-topic-pill').forEach(function(pill) {
+    pill.classList.toggle('is-active', pill.dataset.topic === topic);
+  });
 
   // Related questions
   const relatedEl = document.getElementById('faq-related');
   if (relatedEl && content.related && content.related.length) {
     relatedEl.innerHTML = `
       <div class="faq-related-label">Related Questions</div>
-      ${content.related.map(q => `
-        <div class="faq-related-item">${q}</div>
-      `).join('')}
+      ${content.related.map(q => `<div class="faq-related-item">${q}</div>`).join('')}
     `;
   }
+}
 
+// Wire up topic pill clicks
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(e) {
+    const pill = e.target.closest('.faq-topic-pill');
+    if (pill && pill.dataset.topic) {
+      renderFAQ(pill.dataset.topic);
+    }
+  });
+});
+
+window.SAS_SCREENS.showFAQ = function(data) {
+  const d = data || {};
+  const topic = (d.topic || 'baggage').toLowerCase();
+  renderFAQ(topic);
   window.SAS_APP.openCard('card-faq');
 };

@@ -1058,19 +1058,31 @@ body.in-call .hero-blur-top {
 .seat-feature { font-size: 11px; background: white; color: #000099; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
 
 /* ═══ FAQ CARD ═══ */
-.faq-header { padding: 12px 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-.faq-category { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #000099; font-weight: 600; margin-bottom: 6px; }
+.faq-header { padding: 4px 0 16px; }
+.faq-header-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.faq-icon { width: 36px; height: 36px; background: rgba(0,0,153,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.faq-icon svg { width: 18px; height: 18px; color: #4444CC; }
+.faq-header-text {}
+.faq-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #4444CC; font-weight: 600; margin-bottom: 2px; }
 .faq-title { font-size: 20px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; }
+
+/* Topic pills */
+.faq-topics { display: flex; gap: 8px; flex-wrap: wrap; padding: 12px 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.faq-topic-pill { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s ease; background: var(--card-bg-2); color: var(--text-secondary); border: 1px solid var(--border); white-space: nowrap; }
+.faq-topic-pill.is-active { background: #000099; color: #fff; border-color: #000099; }
+
 .faq-answer { font-size: 14px; line-height: 1.7; color: var(--text-primary); margin-bottom: 20px; }
 .faq-answer p { margin-bottom: 12px; }
-.faq-answer strong { color: #000099; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer strong { color: #6699FF; }
 .faq-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
-.faq-table th { background: #F8F9FF; padding: 10px 12px; text-align: left; font-weight: 600; color: var(--text-primary); border-bottom: 2px solid var(--border); }
+.faq-table th { background: rgba(255,255,255,0.06); padding: 10px 12px; text-align: left; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border); }
 .faq-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
 .faq-table tr:last-child td { border-bottom: none; }
 .faq-related { margin-top: 4px; }
 .faq-related-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-.faq-related-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; color: #000099; font-size: 14px; font-weight: 500; gap: 8px; }
+.faq-related-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; color: #6699FF; font-size: 14px; font-weight: 500; gap: 8px; }
+.faq-related-item:last-child { border-bottom: none; }
 .faq-related-item::after { content: '→'; margin-left: auto; font-size: 16px; opacity: 0.5; }
 
 /* ═══ ESCALATION CARD ═══ */
