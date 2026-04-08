@@ -76,7 +76,7 @@ html, body {
   background: #0a1a2e; /* fallback while images load */
 }
 
-/* Gradient overlay on top of all slides */
+/* Dark gradient overlay */
 .home-hero::after {
   content: '';
   position: absolute;
@@ -90,6 +90,25 @@ html, body {
     rgba(12,12,20,1) 100%
   );
   pointer-events: none;
+}
+
+/* Blur layer — only active during a call (body.in-call class)
+   Fades from full blur at top to none ~55% down, matching banner gradient */
+.hero-blur-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 55%;
+  z-index: 3;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  pointer-events: none;
+  transition: backdrop-filter 0.4s ease;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 25%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 25%, transparent 100%);
+}
+body.in-call .hero-blur-top {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Individual hero slide layers */

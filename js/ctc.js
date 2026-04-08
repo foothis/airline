@@ -264,6 +264,7 @@ window.SAS_CTC = (function () {
   // ═══ CALL STATE ──────────────────────────────────────────────────────────
   function onCallConnected() {
     restoreAudio(); // Unmute immediately so Sarah's voice comes through
+    document.body.classList.add('in-call');
 
     const callBtn = document.getElementById('call-btn-start');
     if (callBtn) callBtn.classList.remove('is-ringing');
@@ -285,6 +286,8 @@ window.SAS_CTC = (function () {
   }
 
   function onCallEnded() {
+    document.body.classList.remove('in-call');
+
     const incallBar = document.getElementById('incall-bar');
     if (incallBar) incallBar.style.display = 'none';
 
