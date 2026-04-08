@@ -156,7 +156,9 @@ html, body {
   align-items: center;
   justify-content: center;
   border: 1.5px solid rgba(255,255,255,0.5);
+  flex-shrink: 0;
 }
+.passenger-avatar svg { width: 18px; height: 18px; }
 .passenger-points {
   color: white;
   font-size: 13px;
