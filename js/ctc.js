@@ -188,14 +188,10 @@ window.SAS_CTC = (function () {
     } catch (e) { /* Audio not available — silent fallback */ }
   }
 
-  // Silence the widget's ringtone by patching HTMLAudioElement.prototype.play.
-  // The widget calls audio.play() for its ring tone — we intercept and block it
-  // for the first 12 seconds of a call (enough for connect), then restore.
+  // Silence the widget's ringtone only — restore the moment the call connects
+  // so Sarah's voice comes through unaffected.
   function suppressWidgetRingtone() {
-    // Also mute any existing audio elements immediately
     document.querySelectorAll('audio').forEach(function(a) { a.muted = true; a.volume = 0; a.pause(); });
-
-    // Patch .play() so any audio the widget tries to start is silenced
     if (!HTMLAudioElement.prototype._origPlay) {
       HTMLAudioElement.prototype._origPlay = HTMLAudioElement.prototype.play;
     }
@@ -204,15 +200,15 @@ window.SAS_CTC = (function () {
       this.volume = 0;
       return HTMLAudioElement.prototype._origPlay.call(this);
     };
+  }
 
-    // Restore after call connects (give 12s to be safe)
-    clearTimeout(window._ringtoneRestoreTimer);
-    window._ringtoneRestoreTimer = setTimeout(function() {
-      if (HTMLAudioElement.prototype._origPlay) {
-        HTMLAudioElement.prototype.play = HTMLAudioElement.prototype._origPlay;
-        delete HTMLAudioElement.prototype._origPlay;
-      }
-    }, 12000);
+  function restoreAudio() {
+    if (HTMLAudioElement.prototype._origPlay) {
+      HTMLAudioElement.prototype.play = HTMLAudioElement.prototype._origPlay;
+      delete HTMLAudioElement.prototype._origPlay;
+    }
+    // Un-mute any audio elements that are now carrying the call
+    document.querySelectorAll('audio').forEach(function(a) { a.muted = false; a.volume = 1; });
   }
 
   function startCall() {
@@ -267,6 +263,8 @@ window.SAS_CTC = (function () {
 
   // ═══ CALL STATE ──────────────────────────────────────────────────────────
   function onCallConnected() {
+    restoreAudio(); // Unmute immediately so Sarah's voice comes through
+
     const callBtn = document.getElementById('call-btn-start');
     if (callBtn) callBtn.classList.remove('is-ringing');
 
