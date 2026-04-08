@@ -339,7 +339,7 @@ window.SAS_CTC = (function () {
       case 'booking':    window.SAS_SCREENS.showBooking(data.data);    break;
       case 'flights':    window.SAS_SCREENS.showFlights(data.data);    break;
       case 'seat':       window.SAS_SCREENS.showSeat(data.data);       break;
-      case 'faq':        window.SAS_SCREENS.showFAQ(data.data);        break;
+      case 'faq':        window.SAS_SCREENS.showFAQ(data.data || data);  break;
       case 'escalation': window.SAS_SCREENS.showEscalation(data.data); break;
       case 'baggage':    showBaggageCard(data.data);                   break;
       case 'confirm':    showConfirmCard(data.data);                   break;
