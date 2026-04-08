@@ -188,8 +188,28 @@ window.SAS_CTC = (function () {
     } catch (e) { /* Audio not available — silent fallback */ }
   }
 
+  // Mute any <audio> elements the widget tries to play as a ringtone
+  function suppressWidgetRingtone() {
+    // Mute existing audio elements
+    document.querySelectorAll('audio').forEach(function(a) { a.muted = true; a.volume = 0; });
+    // Watch for new ones the widget might inject
+    if (window._ringtoneObserver) window._ringtoneObserver.disconnect();
+    window._ringtoneObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        m.addedNodes.forEach(function(node) {
+          if (node.nodeName === 'AUDIO') { node.muted = true; node.volume = 0; }
+          if (node.querySelectorAll) node.querySelectorAll('audio').forEach(function(a) { a.muted = true; a.volume = 0; });
+        });
+      });
+    });
+    window._ringtoneObserver.observe(document.body, { childList: true, subtree: true });
+    // Stop observing after 10s (call should be connected by then)
+    setTimeout(function() { if (window._ringtoneObserver) window._ringtoneObserver.disconnect(); }, 10000);
+  }
+
   function startCall() {
     playCabinChime();
+    suppressWidgetRingtone();
 
     // Re-init widget if language changed since last init
     if (widgetReady && widgetLang && widgetLang !== (window.SAS_LANG || 'en')) {
