@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SAS Airlines</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       STATUS BAR (simulated iOS/Android)
+  ═══════════════════════════════════════════════ -->
+  <div class="status-bar">
+    <span class="status-time" id="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><rect x="0" y="3" width="3" height="9" rx="1" fill="white" opacity="0.4"/><rect x="4.5" y="2" width="3" height="10" rx="1" fill="white" opacity="0.6"/><rect x="9" y="0.5" width="3" height="11.5" rx="1" fill="white"/><rect x="13.5" y="0" width="3" height="12" rx="1" fill="white" opacity="0.3"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 2.4C10.2 2.4 12.2 3.3 13.6 4.8L15 3.3C13.2 1.3 10.7 0 8 0C5.3 0 2.8 1.3 1 3.3L2.4 4.8C3.8 3.3 5.8 2.4 8 2.4Z" fill="white" opacity="0.4"/><path d="M8 5.6C9.4 5.6 10.7 6.2 11.6 7.2L13 5.7C11.7 4.3 9.9 3.4 8 3.4C6.1 3.4 4.3 4.3 3 5.7L4.4 7.2C5.3 6.2 6.6 5.6 8 5.6Z" fill="white" opacity="0.7"/><circle cx="8" cy="10" r="2" fill="white"/></svg>
+      <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="2" y="2" width="16" height="8" rx="2" fill="white"/><path d="M23 4.5V7.5C23.8 7.2 24.5 6.5 24.5 6C24.5 5.5 23.8 4.8 23 4.5Z" fill="white" opacity="0.4"/></svg>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN APP WRAPPER
+  ═══════════════════════════════════════════════ -->
+  <div class="app-wrapper">
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+      <button class="nav-btn nav-btn--back" aria-label="Back" id="nav-back" style="visibility:hidden;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="sas-logo">
+        <svg viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <text x="0" y="20" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="white" letter-spacing="-0.5">SAS</text>
+        </svg>
+      </div>
+      <button class="nav-btn nav-btn--profile" aria-label="Profile" id="nav-profile">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="white" stroke-width="1.8"/><path d="M4 20C4 16.686 7.582 14 12 14C16.418 14 20 16.686 20 20" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <!-- ═══ SCREEN: HOME ═══ -->
+    <main class="screen screen--home is-active" id="screen-home">
+
+      <!-- Hero greeting -->
+      <div class="home-hero">
+        <div class="hero-greeting">Good morning, Erik</div>
+        <div class="hero-subtitle">Ready for your next journey?</div>
+      </div>
+
+      <!-- Upcoming trip card -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Upcoming Trip</span>
+          <a class="section-link" href="#">View all</a>
+        </div>
+        <div class="trip-card trip-card--upcoming" id="upcoming-trip-card">
+          <div class="trip-route">
+            <div class="trip-city">
+              <div class="trip-code">ARN</div>
+              <div class="trip-name">Stockholm</div>
+            </div>
+            <div class="trip-arrow-wrap">
+              <div class="trip-flight-line"></div>
+              <svg class="trip-plane" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L7 12L2 17L12 22L22 17L17 12L22 7L12 2Z" fill="#000099"/></svg>
+            </div>
+            <div class="trip-city">
+              <div class="trip-code">CPH</div>
+              <div class="trip-name">Copenhagen</div>
+            </div>
+          </div>
+          <div class="trip-meta">
+            <div class="trip-meta-item">
+              <div class="trip-meta-label">Date</div>
+              <div class="trip-meta-value">Apr 15, 2026</div>
+            </div>
+            <div class="trip-meta-item">
+              <div class="trip-meta-label">Flight</div>
+              <div class="trip-meta-value">SK 425</div>
+            </div>
+            <div class="trip-meta-item">
+              <div class="trip-meta-label">Booking</div>
+              <div class="trip-meta-value">SK7234</div>
+            </div>
+          </div>
+          <div class="trip-badge trip-badge--confirmed">Confirmed</div>
+        </div>
+      </section>
+
+      <!-- Quick actions -->
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Quick Actions</span>
+        </div>
+        <div class="quick-actions-grid">
+          <button class="quick-action">
+            <div class="quick-action-icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="#000099" stroke-width="1.8"/><path d="M3 10H21" stroke="#000099" stroke-width="1.8"/><path d="M8 3V7M16 3V7" stroke="#000099" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>My Bookings</span>
+          </button>
+          <button class="quick-action">
+            <div class="quick-action-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 12L21 12M12 3L21 12L12 21" stroke="#000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Check-in</span>
+          </button>
+          <button class="quick-action">
+            <div class="quick-action-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 14L4 19M4 19H8M4 19V15" stroke="#000099" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="3" width="11" height="14" rx="2" stroke="#000099" stroke-width="1.8"/><path d="M13 7H18M13 10H18M13 13H16" stroke="#000099" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span>Boarding Pass</span>
+          </button>
+          <button class="quick-action">
+            <div class="quick-action-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#000099" stroke-width="1.8"/><path d="M12 8V12L15 15" stroke="#000099" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>Flight Status</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Eurobonus status -->
+      <section class="section">
+        <div class="eurobonus-card">
+          <div class="eurobonus-left">
+            <div class="eurobonus-label">EuroBonus</div>
+            <div class="eurobonus-points">24,850 <span>points</span></div>
+            <div class="eurobonus-tier">Silver Member</div>
+          </div>
+          <div class="eurobonus-right">
+            <div class="eurobonus-progress-label">Next: Gold</div>
+            <div class="eurobonus-bar">
+              <div class="eurobonus-bar-fill" style="width: 62%"></div>
+            </div>
+            <div class="eurobonus-progress-text">37,500 needed</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spacer for bottom bar -->
+      <div style="height: 120px;"></div>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════
+         OVERLAY SCREENS (driven by SIP INFO metadata)
+    ═══════════════════════════════════════════════ -->
+
+    <!-- BOOKING DETAILS CARD -->
+    <div class="overlay-card" id="card-booking">
+      <div class="overlay-handle"></div>
+      <button class="overlay-close" onclick="closeCard('card-booking')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="overlay-scroll">
+        <div class="booking-header">
+          <div class="booking-ref-label">Booking Reference</div>
+          <div class="booking-ref" id="booking-ref">SK7234</div>
+          <div class="booking-passenger" id="booking-passenger">Erik Johansson</div>
+        </div>
+        <div class="flight-card" id="booking-outbound">
+          <div class="flight-card-label">Outbound</div>
+          <div class="flight-card-route">
+            <div class="fc-city">
+              <div class="fc-time" id="booking-dep-time">06:00</div>
+              <div class="fc-code" id="booking-dep-code">ARN</div>
+            </div>
+            <div class="fc-middle">
+              <div class="fc-duration" id="booking-duration">1h 20m</div>
+              <div class="fc-line"><div class="fc-dot"></div><div class="fc-line-bar"></div><div class="fc-dot"></div></div>
+              <div class="fc-direct">Direct</div>
+            </div>
+            <div class="fc-city">
+              <div class="fc-time" id="booking-arr-time">07:20</div>
+              <div class="fc-code" id="booking-arr-code">CPH</div>
+            </div>
+          </div>
+          <div class="flight-card-meta">
+            <span id="booking-flight-num">SK 425</span>
+            <span id="booking-date">Apr 15, 2026</span>
+            <span id="booking-class">SAS Go</span>
+          </div>
+        </div>
+        <div class="booking-details-grid">
+          <div class="bd-item">
+            <div class="bd-label">Seat</div>
+            <div class="bd-value" id="booking-seat">14C</div>
+          </div>
+          <div class="bd-item">
+            <div class="bd-label">Baggage</div>
+            <div class="bd-value" id="booking-baggage">1 x 23kg</div>
+          </div>
+          <div class="bd-item">
+            <div class="bd-label">Status</div>
+            <div class="bd-value bd-value--confirmed" id="booking-status">Confirmed</div>
+          </div>
+          <div class="bd-item">
+            <div class="bd-label">Ticket</div>
+            <div class="bd-value" id="booking-ticket">Economy</div>
+          </div>
+        </div>
+        <button class="action-btn action-btn--primary" id="booking-checkin-btn">Check In Now</button>
+        <button class="action-btn action-btn--secondary" id="booking-boarding-btn">View Boarding Pass</button>
+      </div>
+    </div>
+
+    <!-- FLIGHT SEARCH RESULTS CARD -->
+    <div class="overlay-card" id="card-flights">
+      <div class="overlay-handle"></div>
+      <button class="overlay-close" onclick="closeCard('card-flights')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="overlay-scroll">
+        <div class="search-header">
+          <div class="search-route" id="search-route">ARN → LHR</div>
+          <div class="search-meta" id="search-meta">Mon 20 Apr · 1 passenger</div>
+        </div>
+        <div class="flight-results" id="flight-results">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- BAGGAGE CONFIRMATION CARD -->
+    <div class="overlay-card overlay-card--compact" id="card-baggage">
+      <div class="overlay-handle"></div>
+      <button class="overlay-close" onclick="closeCard('card-baggage')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="overlay-scroll">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E8F5E9"/><path d="M20 32L28 40L44 24" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="confirmation-title">Baggage Added</div>
+        <div class="confirmation-desc" id="baggage-desc">1 extra bag added to SK 425</div>
+        <div class="confirmation-ref-label">Confirmation</div>
+        <div class="confirmation-ref" id="baggage-ref">BG789012</div>
+        <div class="confirmation-amount" id="baggage-amount">399 SEK</div>
+      </div>
+    </div>
+
+    <!-- SEAT CHANGE CARD -->
+    <div class="overlay-card" id="card-seat">
+      <div class="overlay-handle"></div>
+      <button class="overlay-close" onclick="closeCard('card-seat')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="overlay-scroll">
+        <div class="seat-header">
+          <div class="seat-header-title">Seat Updated</div>
+          <div class="seat-header-flight" id="seat-flight">SK 425 · ARN → CPH</div>
+        </div>
+        <div class="seat-map-container">
+          <div class="seat-map" id="seat-map">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+        <div class="seat-info-card">
+          <div class="seat-info-number" id="seat-number">12A</div>
+          <div class="seat-info-type" id="seat-type">Exit Row · Extra Legroom</div>
+          <div class="seat-info-features">
+            <span class="seat-feature">34" legroom</span>
+            <span class="seat-feature">Window</span>
+            <span class="seat-feature">Power outlet</span>
+          </div>
+        </div>
+        <div class="confirmation-ref-label">Confirmation</div>
+        <div class="confirmation-ref" id="seat-ref">SC123456</div>
+      </div>
+    </div>
+
+    <!-- FAQ CARD -->
+    <div class="overlay-card" id="card-faq">
+      <div class="overlay-handle"></div>
+      <button class="overlay-close" onclick="closeCard('card-faq')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="overlay-scroll">
+        <div class="faq-header">
+          <div class="faq-category" id="faq-category">Baggage</div>
+          <div class="faq-title" id="faq-title">Baggage Allowance</div>
+        </div>
+        <div class="faq-answer" id="faq-answer">
+          <!-- Populated by JS -->
+        </div>
+        <div class="faq-related" id="faq-related">
+          <!-- Related questions -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ESCALATION CARD -->
+    <div class="overlay-card overlay-card--escalation" id="card-escalation">
+      <div class="overlay-handle"></div>
+      <div class="overlay-scroll">
+        <div class="escalation-icon">
+          <div class="escalation-pulse"></div>
+          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E3F2FD"/><path d="M32 20C27.6 20 24 23.6 24 28C24 30.4 25.1 32.6 26.8 34.1L24 40H40L37.2 34.1C38.9 32.6 40 30.4 40 28C40 23.6 36.4 20 32 20Z" fill="#000099"/></svg>
+        </div>
+        <div class="escalation-title">Connecting You to an Agent</div>
+        <div class="escalation-desc" id="escalation-desc">Transferring to our premium support team</div>
+        <div class="escalation-wait">
+          <div class="escalation-wait-label">Estimated wait</div>
+          <div class="escalation-wait-time" id="escalation-wait">Under 2 minutes</div>
+        </div>
+        <div class="escalation-context">
+          <div class="escalation-context-title">Context shared with agent</div>
+          <div class="escalation-context-items" id="escalation-context">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+        <div class="escalation-connecting">
+          <div class="connecting-dot"></div>
+          <div class="connecting-dot"></div>
+          <div class="connecting-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING CONFIRMATION (new flight) -->
+    <div class="overlay-card overlay-card--compact" id="card-booking-confirm">
+      <div class="overlay-handle"></div>
+      <button class="overlay-close" onclick="closeCard('card-booking-confirm')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="overlay-scroll">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#E8F5E9"/><path d="M20 32L28 40L44 24" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="confirmation-title">Flight Booked!</div>
+        <div class="confirmation-desc" id="confirm-desc">Your flight has been confirmed</div>
+        <div class="confirmation-ref-label">Booking Reference</div>
+        <div class="confirmation-ref" id="confirm-ref">SK0000</div>
+        <div class="confirmation-amount" id="confirm-amount"></div>
+        <button class="action-btn action-btn--primary" onclick="closeCard('card-booking-confirm')">View in My Trips</button>
+      </div>
+    </div>
+
+  </div><!-- /.app-wrapper -->
+
+  <!-- ═══════════════════════════════════════════════
+       BOTTOM CALL BAR (always visible)
+  ═══════════════════════════════════════════════ -->
+  <div class="bottom-bar" id="bottom-bar">
+    <!-- Pre-call state -->
+    <div class="bottom-bar-idle" id="bottom-idle">
+      <div class="call-prompt">
+        <div class="call-prompt-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.1 14.5C14.3 14.3 14.7 14.2 15 14.4C16 14.7 17.1 14.9 18.2 14.9C18.7 14.9 19.2 15.3 19.2 15.9V18.9C19.2 19.4 18.8 19.9 18.2 19.9C9.8 19.9 3 13.1 3 4.7C3 4.1 3.4 3.7 4 3.7H7C7.5 3.7 7.9 4.1 7.9 4.7C7.9 5.8 8.1 6.9 8.4 7.9C8.5 8.2 8.4 8.6 8.2 8.8L6.6 10.8Z" fill="#000099"/></svg>
+        </div>
+        <div class="call-prompt-text">
+          <div class="call-prompt-title">Need help?</div>
+          <div class="call-prompt-subtitle">Call Sarah, your SAS AI assistant</div>
+        </div>
+        <button class="call-btn-start" id="call-btn-start">Call</button>
+      </div>
+    </div>
+
+    <!-- In-call state -->
+    <div class="bottom-bar-incall" id="bottom-incall" style="display:none;">
+      <div class="incall-transcript-row" id="transcript-row">
+        <span class="transcript-text" id="transcript-text"></span>
+      </div>
+      <div class="incall-controls">
+        <div class="incall-info">
+          <div class="call-avatar">S</div>
+          <div class="incall-details">
+            <div class="incall-name">Sarah</div>
+            <div class="incall-duration" id="call-duration">00:00</div>
+          </div>
+        </div>
+        <div class="incall-buttons">
+          <button class="incall-btn incall-btn--mute" id="btn-mute" title="Mute">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 1C10.3 1 9 2.3 9 4V12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12V4C15 2.3 13.7 1 12 1Z" stroke="currentColor" stroke-width="1.8"/><path d="M5 10V12C5 15.9 8.1 19 12 19M19 10V12C19 15.9 15.9 19 12 19M12 19V23M9 23H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <button class="incall-btn incall-btn--hangup" id="btn-hangup" title="End call">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.1 14.5C14.3 14.3 14.7 14.2 15 14.4C16 14.7 17.1 14.9 18.2 14.9C18.7 14.9 19.2 15.3 19.2 15.9V18.9C19.2 19.4 18.8 19.9 18.2 19.9C9.8 19.9 3 13.1 3 4.7C3 4.1 3.4 3.7 4 3.7H7C7.5 3.7 7.9 4.1 7.9 4.7C7.9 5.8 8.1 6.9 8.4 7.9C8.5 8.2 8.4 8.6 8.2 8.8L6.6 10.8Z" fill="#fff" transform="rotate(135, 12, 12)"/></svg>
+          </button>
+          <button class="incall-btn incall-btn--speaker" id="btn-speaker" title="Speaker">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.07 4.93C20.98 6.84 22 9.37 22 12C22 14.63 20.98 17.16 19.07 19.07" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.54 8.46C16.48 9.4 17 10.67 17 12C17 13.33 16.48 14.6 15.54 15.54" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════ -->
+  <!-- Click-to-Call SDK (update URL when you have the real VG endpoint) -->
+  <script src="https://cdn.jsdelivr.net/npm/@cognigy/webchat@latest/dist/sdk.bundle.js" onerror="console.warn('SDK not loaded from CDN')"></script>
+  <!-- Try the direct SDK bundle -->
+  <script src="https://github.com/Cognigy/cognigy-vg-browser-sdk/releases/download/v1.0.0/sdk.bundle.js" onerror="console.warn('Direct SDK not loaded')"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/screens/booking.js"></script>
+  <script src="js/screens/flights.js"></script>
+  <script src="js/screens/seat.js"></script>
+  <script src="js/screens/faq.js"></script>
+  <script src="js/screens/escalation.js"></script>
+  <script src="js/ctc.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
