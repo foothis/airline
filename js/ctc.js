@@ -146,7 +146,36 @@ window.SAS_CTC = (function () {
   }
 
   // ═══ CALL CONTROLS ───────────────────────────────────────────────────────
+  // ═══ CABIN CHIME ─────────────────────────────────────────────────────────
+  // Classic two-note airline "ding-dong" synthesised via Web Audio API.
+  function playCabinChime() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      // Note frequencies: E5 then C5 (classic cabin chime interval)
+      const notes = [
+        { freq: 659.25, start: 0,    dur: 0.55 },
+        { freq: 523.25, start: 0.45, dur: 0.75 }
+      ];
+      notes.forEach(function(n) {
+        const osc  = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(n.freq, ctx.currentTime + n.start);
+        // Gentle bell envelope: fast attack, slow decay
+        gain.gain.setValueAtTime(0, ctx.currentTime + n.start);
+        gain.gain.linearRampToValueAtTime(0.22, ctx.currentTime + n.start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + n.start + n.dur);
+        osc.start(ctx.currentTime + n.start);
+        osc.stop(ctx.currentTime + n.start + n.dur);
+      });
+    } catch (e) { /* Audio not available — silent fallback */ }
+  }
+
   function startCall() {
+    playCabinChime();
+
     // Re-init widget if language changed since last init
     if (widgetReady && widgetLang && widgetLang !== (window.SAS_LANG || 'en')) {
       console.log('[SAS CTC] Language changed — reinitialising widget');
