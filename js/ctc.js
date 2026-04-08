@@ -89,6 +89,7 @@ window.SAS_CTC = (function () {
 
       hideWidgetUI();
       bindCallButton();
+      initDemoMode(); // always available for testing
 
     } catch (e) {
       console.error('[SAS CTC] Init failed:', e);
@@ -236,8 +237,8 @@ window.SAS_CTC = (function () {
     if (raw) {
       try { data = typeof raw === 'string' ? JSON.parse(raw) : raw; }
       catch (e) { console.warn('[SAS CTC] Bad SIP INFO body:', raw); return; }
-    } else if (info && info.screen) {
-      data = info; // demo mode direct call
+    } else if (info && (info.screen || info.transcript || info.handover)) {
+      data = info; // demo mode / transcript-only payload
     } else {
       return;
     }
@@ -285,10 +286,33 @@ window.SAS_CTC = (function () {
     const el  = document.getElementById('transcript-text');
     const row = document.getElementById('transcript-row');
     if (!el || !row) return;
+
     el.textContent = (speaker === 'user' ? 'You: ' : '') + text;
     row.classList.remove('is-empty');
+
+    // Reset animation so it replays on every new message
+    el.style.animation = 'none';
+    el.style.transform = 'translateX(0)';
+    void el.offsetWidth; // force reflow
+
+    // Calculate overflow: how far does the text extend past the container?
+    const containerW = row.offsetWidth - 24; // minus padding
+    const textW      = el.scrollWidth;
+    const overflow   = textW - containerW;
+
+    if (overflow > 0) {
+      // Speed: ~80px/s (comfortable reading pace), min 2s, max 12s
+      const duration = Math.min(12, Math.max(2, overflow / 80));
+      el.style.setProperty('--scroll-dist', `-${overflow}px`);
+      el.style.animation = `transcript-scroll ${duration}s ease-in-out forwards`;
+    }
+
     clearTimeout(updateTranscript._t);
-    updateTranscript._t = setTimeout(function () { row.classList.add('is-empty'); }, 7000);
+    updateTranscript._t = setTimeout(function () {
+      row.classList.add('is-empty');
+      el.style.animation = 'none';
+      el.style.transform = 'translateX(0)';
+    }, 12000);
   }
 
   // ═══ SEND TO AGENT ───────────────────────────────────────────────────────

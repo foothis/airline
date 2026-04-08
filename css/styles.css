@@ -433,8 +433,8 @@ html, body {
   box-shadow: 0 -1px 0 var(--border), 0 -4px 20px rgba(0,0,0,0.06);
   z-index: 50;
   display: flex;
-  align-items: flex-end;
-  padding: 6px 0 8px;
+  align-items: center;
+  padding: 0 0 4px;
   height: var(--bottom-bar-h);
 }
 .bottom-nav-item {
@@ -516,9 +516,14 @@ html, body {
   color: var(--text-secondary);
   font-style: italic;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: block;
+  /* Scrolling driven by JS — see updateTranscript() */
+}
+@keyframes transcript-scroll {
+  0%   { transform: translateX(0); }
+  10%  { transform: translateX(0); }   /* pause at start */
+  90%  { transform: translateX(var(--scroll-dist)); }
+  100% { transform: translateX(var(--scroll-dist)); } /* pause at end */
 }
 .incall-controls {
   display: flex;
