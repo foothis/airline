@@ -67,36 +67,69 @@ html, body {
 }
 .screen.is-active { display: block; }
 
-/* ═══ HOME HERO — full bleed destination photo ═══ */
+/* ═══ HOME HERO — full bleed destination photo with rotating slideshow ═══ */
 .home-hero {
   position: relative;
   height: var(--hero-h);
   overflow: hidden;
   flex-shrink: 0;
-  /* Destination sky → landscape gradient */
-  background:
-    linear-gradient(to bottom,
-      rgba(0,0,0,0.08) 0%,
-      rgba(0,0,0,0.0) 35%,
-      rgba(0,0,0,0.55) 70%,
-      rgba(12,12,20,1) 100%
-    ),
-    linear-gradient(180deg,
-      #6BAED6 0%,
-      #4592C7 18%,
-      #74A86E 45%,
-      #558B50 62%,
-      #3D7039 75%,
-      #2A5528 88%,
-      #1C3E1A 100%
-    );
+  background: #0a1a2e; /* fallback while images load */
 }
 
-/* Floating top bar — sits over the hero */
+/* Gradient overlay on top of all slides */
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.0) 30%,
+    rgba(0,0,0,0.45) 65%,
+    rgba(12,12,20,1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Individual hero slide layers */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.06);
+  animation: hero-ken-burns 18s ease-in-out infinite;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 6s; }
+.hero-slide:nth-child(3) { animation-delay: 12s; }
+
+.hero-slide--riga {
+  background-image: url('https://components.flysas.com/content/assets/ctfassets/oz9qk43ly6yk/3ECVO3W22LKtQTGTyqY71k/606a4fda6719d79e8c87895177ffabdb/Latvia-Riga-rix-garden-buildings-sas.jpeg?fm=webp&q=82&f=&w=1600');
+}
+.hero-slide--cph {
+  background-image: url('https://components.flysas.com/content/assets/ctfassets/oz9qk43ly6yk/anyt7YL3XBYB8DZH2UibJ/7975c7caf6bda50c60e6598e22f609f2/denmark-copenhagen-cph-canal-dusk-sas.png?fm=webp&q=66&f=&w=800');
+}
+.hero-slide--hotel {
+  background-image: url('https://components.flysas.com/content/assets/ctfassets/oz9qk43ly6yk/1XHsMpeH1CTAeeNvlvrr9k/0a1af2ef8543c3e2fce60c280b4a77cb/SAS.XX_BIG62_Hotel_960x720.png?fm=webp&q=66&f=&w=800');
+}
+
+@keyframes hero-ken-burns {
+  0%   { opacity: 0; transform: scale(1.06); }
+  8%   { opacity: 1; transform: scale(1.05); }
+  50%  { opacity: 1; transform: scale(1.00); }
+  58%  { opacity: 0; transform: scale(1.00); }
+  100% { opacity: 0; transform: scale(1.06); }
+}
+
+/* Floating top bar — sits over the slides + overlay */
 .home-top-bar {
   position: absolute;
   top: 0; left: 0; right: 0;
-  z-index: 10;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -160,7 +193,7 @@ html, body {
   bottom: 30px;
   left: 20px;
   right: 20px;
-  z-index: 5;
+  z-index: 5; /* above .home-hero::after overlay */
   color: white;
 }
 .hero-eyebrow {
@@ -323,9 +356,15 @@ html, body {
   background: #1e3a5f;
   position: relative;
 }
-.deal-img--barcelona { background: linear-gradient(160deg, #1a5276 0%, #2471a3 50%, #7fb3d3 100%); }
-.deal-img--london    { background: linear-gradient(160deg, #1c2833 0%, #2e4053 50%, #717d7e 100%); }
-.deal-img--oslo      { background: linear-gradient(160deg, #1a2f1e 0%, #1e8449 50%, #a9cce3 100%); }
+.deal-img--barcelona {
+  background: url('https://tripx-wp.imgix.net/18/2025/12/rome-colloseum-sas-holidays-scaled.jpg?auto=format') center/cover;
+}
+.deal-img--london {
+  background: url('https://tripx-wp.imgix.net/18/2025/12/london-big-ben-bus-sas-holidays.jpg?auto=format') center/cover;
+}
+.deal-img--oslo {
+  background: url('https://tripx-wp.imgix.net/18/2025/12/france-paris-baguettes-city-sas-holidays-scaled.jpg?auto=format') center/cover;
+}
 .deal-info { padding: 10px 12px 12px; }
 .deal-city { font-size: 13px; font-weight: 700; color: var(--text-primary); }
 .deal-type { font-size: 11px; color: var(--text-muted); margin: 1px 0; }
@@ -341,8 +380,8 @@ html, body {
   cursor: pointer;
 }
 .holidays-card-img {
-  height: 130px;
-  background: linear-gradient(160deg, #8e2020 0%, #c0392b 40%, #e74c3c 70%, #f1948a 100%);
+  height: 160px;
+  background: url('https://tripx-wp.imgix.net/18/2026/01/swimsuit-woman-back-sas-holidays_2_1650x1100.jpg?auto=format') center/cover;
   position: relative;
 }
 .holidays-card-text { padding: 16px 20px 20px; }
