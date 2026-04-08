@@ -103,8 +103,20 @@ window.SAS_APP = (function() {
                      now.getMinutes().toString().padStart(2, '0');
   }
 
+  // ═══ LANGUAGE TOGGLE ═══
+  function toggleLang() {
+    window.SAS_LANG = (window.SAS_LANG === 'sv') ? 'en' : 'sv';
+    const flag = document.getElementById('lang-flag');
+    const code = document.getElementById('lang-code');
+    if (flag) flag.textContent = window.SAS_LANG === 'sv' ? '🇸🇪' : '🇬🇧';
+    if (code) code.textContent = window.SAS_LANG === 'sv' ? 'SV' : 'EN';
+    console.log('[SAS App] Language:', window.SAS_LANG, '→ userId:', window.SAS_CONFIG.USER_ID);
+    // Reinit widget so next call uses updated userId
+    if (window.SAS_CTC) window.SAS_CTC.reinit();
+  }
+
   // ═══ EXPOSE ═══
-  return { init, openCard, closeCard, closeTopCard, state };
+  return { init, openCard, closeCard, closeTopCard, toggleLang, state };
 
 })();
 

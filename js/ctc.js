@@ -20,6 +20,7 @@ window.SAS_CTC = (function () {
   let callTimer = null;
   let callSeconds = 0;
   let widgetReady = false;
+  let widgetLang = null; // language at last widget init
 
   // ═══ INIT ═══════════════════════════════════════════════════════════════
   function init() {
@@ -39,9 +40,11 @@ window.SAS_CTC = (function () {
     }
 
     try {
-      window.initWebRTCWidget(endpointUrl, {}, function (widget) {
+      const userId = (window.SAS_CONFIG || {}).USER_ID || 'demoen';
+      widgetLang = window.SAS_LANG || 'en';
+      window.initWebRTCWidget(endpointUrl, { userId }, function (widget) {
         widgetReady = true;
-        console.log('[SAS CTC] Widget ready', widget);
+        console.log('[SAS CTC] Widget ready (userId:', userId, ')', widget);
 
         if (!widget) { initDemoMode(); return; }
 
@@ -144,6 +147,14 @@ window.SAS_CTC = (function () {
 
   // ═══ CALL CONTROLS ───────────────────────────────────────────────────────
   function startCall() {
+    // Re-init widget if language changed since last init
+    if (widgetReady && widgetLang && widgetLang !== (window.SAS_LANG || 'en')) {
+      console.log('[SAS CTC] Language changed — reinitialising widget');
+      widgetReady = false;
+      init();
+      setTimeout(startCall, 500);
+      return;
+    }
     if (!widgetReady) { initDemoMode(); onCallConnected(); return; }
 
     const btn = document.querySelector('.webrtc_widget_call_button');
@@ -377,7 +388,14 @@ window.SAS_CTC = (function () {
     if (el) el.textContent = text;
   }
 
+  // ═══ REINIT (called when language changes) ───────────────────────────────
+  function reinit() {
+    widgetReady = false;
+    currentSession = null;
+    init();
+  }
+
   // ═══ PUBLIC ──────────────────────────────────────────────────────────────
-  return { init, startCall, hangUp, toggleMute, sendToAgent, handleInfoReceived };
+  return { init, reinit, startCall, hangUp, toggleMute, sendToAgent, handleInfoReceived };
 
 })();

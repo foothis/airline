@@ -106,6 +106,27 @@ html, body {
   transition: background 0.15s;
 }
 .nav-btn:active { background: rgba(255,255,255,0.15); }
+
+/* Language toggle pill */
+.lang-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.lang-toggle:active { background: rgba(255,255,255,0.25); }
+#lang-flag { font-size: 14px; line-height: 1; }
+#lang-code { font-size: 12px; font-weight: 700; }
 .sas-logo {
   position: absolute;
   left: 50%;
