@@ -25,8 +25,8 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --bottom-bar-h: 90px;
-  --status-bar-h: 44px;
+  --bottom-bar-h: 72px;
+  --status-bar-h: 0px;
   --nav-h: 56px;
 }
 
@@ -39,29 +39,8 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ═══ STATUS BAR ═══ */
-.status-bar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--status-bar-h);
-  background: var(--sas-blue);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  z-index: 100;
-}
-.status-time {
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-}
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+/* ═══ STATUS BAR — hidden (simulator provides its own) ═══ */
+.status-bar { display: none; }
 
 /* ═══ APP WRAPPER ═══ */
 .app-wrapper {
@@ -455,7 +434,7 @@ html, body {
   z-index: 50;
   display: flex;
   align-items: flex-end;
-  padding: 6px 0 env(safe-area-inset-bottom, 10px);
+  padding: 6px 0 8px;
   height: var(--bottom-bar-h);
 }
 .bottom-nav-item {
