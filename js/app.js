@@ -35,20 +35,6 @@ window.SAS_APP = (function() {
     pill.innerHTML = '● On call with Sarah';
     document.body.appendChild(pill);
 
-    // Bind call controls
-    document.getElementById('call-btn-start').addEventListener('click', () => {
-      window.SAS_CTC.startCall();
-    });
-    document.getElementById('btn-hangup') && document.getElementById('btn-hangup').addEventListener('click', () => {
-      window.SAS_CTC.hangUp();
-    });
-    document.getElementById('btn-mute') && document.getElementById('btn-mute').addEventListener('click', () => {
-      window.SAS_CTC.toggleMute();
-    });
-    document.getElementById('btn-speaker') && document.getElementById('btn-speaker').addEventListener('click', function() {
-      this.classList.toggle('is-on');
-    });
-
     // Bottom nav tabs
     document.querySelectorAll('.bottom-nav-item').forEach(btn => {
       btn.addEventListener('click', function() {
