@@ -36,7 +36,7 @@
             <div class="passenger-avatar">E</div>
             <div class="passenger-points">
               <span class="points-value">24 850</span>
-              <span class="points-label"> Points</span>
+              <span class="points-label" data-i18n="points-label"> Points</span>
             </div>
           </div>
           <button class="lang-toggle" id="lang-toggle" onclick="SAS_APP.toggleLang()">
@@ -46,10 +46,10 @@
 
         <!-- Hero copy -->
         <div class="hero-content">
-          <div class="hero-eyebrow">Discover the world with SAS</div>
-          <div class="hero-headline">New<br>Destinations</div>
-          <div class="hero-sub">Travel between April 29 – Oct 31</div>
-          <button class="hero-cta">Book by April 14</button>
+          <div class="hero-eyebrow" data-i18n="hero-eyebrow">Discover the world with SAS</div>
+          <div class="hero-headline" data-i18n-html="hero-headline">New<br>Destinations</div>
+          <div class="hero-sub" data-i18n="hero-sub">Travel between April 29 – Oct 31</div>
+          <button class="hero-cta" data-i18n="hero-cta">Book by April 14</button>
         </div>
       </div>
 
@@ -57,37 +57,37 @@
       <div class="search-widget">
         <div class="sw-panel sw-panel--from">
           <div class="sw-panel-label">
-            From
+            <span data-i18n="sw-from-label">From</span>
             <svg viewBox="0 0 24 24" fill="currentColor" class="sw-plane-icon"><path d="M19.75 20.5H4.25a.73.73 0 0 1-.534-.215.73.73 0 0 1-.216-.535q0-.32.216-.535A.73.73 0 0 1 4.25 19h15.5q.32 0 .535.215a.73.73 0 0 1 .215.535.73.73 0 0 1-.215.535.73.73 0 0 1-.535.215M5.473 12.871l4.944-1.338-3.61-6.112a.68.68 0 0 1-.06-.581.6.6 0 0 1 .43-.405l.329-.106a.57.57 0 0 1 .349-.02q.172.045.309.157l6.561 5.882 4.952-1.321q.685-.186 1.238.257.555.443.554 1.174 0 .473-.28.83-.28.358-.727.489L5.719 15.762a.82.82 0 0 1-.572-.026.88.88 0 0 1-.432-.386l-1.87-3.21a.44.44 0 0 1-.029-.445.48.48 0 0 1 .357-.278l.289-.056a.45.45 0 0 1 .217.003q.106.028.202.109z"/></svg>
           </div>
           <div class="sw-panel-value">ARN</div>
-          <div class="sw-panel-city">Stockholm</div>
+          <div class="sw-panel-city" data-i18n="sw-from-city">Stockholm</div>
         </div>
         <button class="sw-swap-btn" aria-label="Swap">
           <svg viewBox="0 0 24 24" fill="none"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="sw-panel sw-panel--to">
           <div class="sw-panel-label">
-            To
+            <span data-i18n="sw-to-label">To</span>
             <svg viewBox="0 0 24 24" fill="currentColor" class="sw-plane-icon"><path d="m18.658 15.756-14.5-4.027a.94.94 0 0 1-.477-.321.85.85 0 0 1-.181-.542V7.25a.47.47 0 0 1 .2-.397.44.44 0 0 1 .433-.068l.279.086a.5.5 0 0 1 .323.314l.619 1.886 4.896 1.379V3.375q0-.34.26-.551a.61.61 0 0 1 .59-.116l.338.08a.6.6 0 0 1 .301.165.8.8 0 0 1 .19.3l2.629 8.382 4.884 1.37q.49.132.773.522.285.39.285.879 0 .699-.579 1.123a1.39 1.39 0 0 1-1.263.227M4.25 20.5a.73.73 0 0 1-.534-.215.73.73 0 0 1-.216-.535q0-.32.216-.535A.73.73 0 0 1 4.25 19h15.5q.32 0 .535.215a.73.73 0 0 1 .215.535.73.73 0 0 1-.215.535.73.73 0 0 1-.535.215z"/></svg>
           </div>
-          <div class="sw-panel-value sw-panel-value--search">Search</div>
-          <div class="sw-panel-city">Destination</div>
+          <div class="sw-panel-value sw-panel-value--search" data-i18n="sw-to-value">Search</div>
+          <div class="sw-panel-city" data-i18n="sw-to-city">Destination</div>
         </div>
       </div>
 
       <!-- OFFERS SECTION -->
       <div class="section">
-        <div class="section-label">Offers right now</div>
-        <div class="section-sublabel">Stockholm, one way, including taxes and fees</div>
+        <div class="section-label" data-i18n="offers-label">Offers right now</div>
+        <div class="section-sublabel" data-i18n="offers-sub">Stockholm, one way, including taxes and fees</div>
       </div>
 
       <!-- Offer card -->
       <div class="offer-card">
         <div class="offer-card-img"></div>
         <div class="offer-card-body">
-          <div class="offer-card-eyebrow">Find the lowest fares</div>
-          <div class="offer-card-headline">for your next trip</div>
+          <div class="offer-card-eyebrow" data-i18n="offer-eyebrow">Find the lowest fares</div>
+          <div class="offer-card-headline" data-i18n="offer-headline">for your next trip</div>
         </div>
       </div>
 
@@ -129,9 +129,9 @@
             </svg>
             <span class="holidays-brand-text">Holidays</span>
           </div>
-          <div class="holidays-headline">More vacation for less</div>
-          <div class="holidays-sub">Lower prices when you book flight + hotel together</div>
-          <button class="holidays-btn">Book now</button>
+          <div class="holidays-headline" data-i18n="holidays-headline">More vacation for less</div>
+          <div class="holidays-sub" data-i18n="holidays-sub">Lower prices when you book flight + hotel together</div>
+          <button class="holidays-btn" data-i18n="holidays-btn">Book now</button>
         </div>
       </div>
 
@@ -142,28 +142,28 @@
             <div class="action-list-icon">
               <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 10H21" stroke="currentColor" stroke-width="1.8"/><path d="M8 3V7M16 3V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </div>
-            <span class="action-list-label">Add Booking</span>
+            <span class="action-list-label" data-i18n="action-add-booking">Add Booking</span>
             <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="action-list-item">
             <div class="action-list-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
             </div>
-            <span class="action-list-label">Check-In</span>
+            <span class="action-list-label" data-i18n="action-checkin">Check-In</span>
             <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="action-list-item">
             <div class="action-list-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M5 17.5L19 6.5M19 6.5H13M19 6.5V12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span class="action-list-label">Flight Status</span>
+            <span class="action-list-label" data-i18n="action-flightstatus">Flight Status</span>
             <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="action-list-item">
             <div class="action-list-icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M14 9V5a3 3 0 00-6 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="2" y="9" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
             </div>
-            <span class="action-list-label">Feedback</span>
+            <span class="action-list-label" data-i18n="action-feedback">Feedback</span>
             <div class="action-list-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
         </div>
@@ -361,13 +361,13 @@
           <path fill="currentColor" d="M30.8065 0C37.2845 0 40.5227 1.70852 41.7012 2.277C42.4376 2.70528 42.2897 3.27376 42.2897 3.27376L41.6688 5.91588C41.6178 6.12394 41.5792 6.33487 41.5533 6.54753C41.407 6.83254 41.1127 6.83254 40.8169 6.54753L39.489 5.78339C37.8637 4.90371 35.9427 4.12879 33.3099 4.12879C29.3353 4.12879 27.2725 6.97581 28.3031 11.1031L29.018 13.7267C29.8408 16.8669 30.6393 20.0134 31.4135 23.1659L31.6908 24.3414C33.4562 31.4589 28.451 40 14.9066 40C7.39804 40 2.68708 37.2947 1.06643 36.0145C0.183701 35.3027 -0.110542 34.8744 0.0358092 34.4477L0.479484 33.0365C0.778348 32.1152 1.13267 31.0954 1.21432 31.1739C1.21432 30.6039 1.50856 30.4622 1.80281 30.7472L2.48064 31.3819C4.25688 32.9841 8.01579 35.8712 12.9917 35.8712C19.3233 35.8712 18.8812 30.8889 18.8812 30.1772C18.8812 28.1852 16.2315 18.3623 15.4951 15.8003C13.4339 7.54429 18.587 0 30.8065 0ZM102.505 0C108.983 0 112.221 1.70852 113.399 2.277C114.136 2.70528 113.988 3.27376 113.988 3.27376L113.369 5.91588C113.317 6.12394 113.279 6.33487 113.253 6.54753C113.107 6.83254 112.812 6.83254 112.518 6.54753C110.603 5.40903 108.396 4.12879 105.01 4.12879C101.035 4.12879 98.9722 6.97581 100.003 11.1031L100.484 12.8347C101.363 16.1424 103.036 22.7469 103.389 24.3429C105.156 31.4589 100.151 40 86.6063 40C79.0978 40 74.681 37.438 73.0619 36.1562C72.3256 35.5631 71.999 35.1687 71.9943 34.8051L72.6907 31.4204C72.7138 31.3203 72.7338 31.2448 72.7461 31.2001C72.9156 30.7472 73.3562 30.6054 73.6504 30.8889L74.812 31.8995C76.7299 33.5018 80.0991 35.8712 84.6914 35.8712C91.0231 35.8712 90.5809 30.8889 90.5809 30.1772C90.5809 28.1852 87.9312 18.3623 87.1948 15.8003C85.132 7.54429 90.2851 0 102.505 0ZM74.6795 0.426745C75.0338 0.426745 75.0092 0.700971 75.0615 0.810353L75.1216 0.853489L67.4652 39.0032C67.4652 39.2174 67.382 39.2698 67.2803 39.2836L53.4786 39.2882C53.038 39.2882 53.038 39.0032 53.038 38.8615L54.6356 30.7349C54.6444 30.692 54.6516 30.6489 54.6571 30.6055L54.6186 30.5053L54.5108 30.4622H43.1724L43.0322 30.4992L42.8782 30.6055L36.106 39.0032C36.106 39.1111 36.0243 39.2174 35.7963 39.2651L35.519 39.2882H30.805C30.5862 39.2882 30.5308 39.2081 30.5785 39.0479L30.6586 38.8615L62.3121 0.711755L62.4538 0.611616C62.5854 0.537005 62.7286 0.484934 62.8774 0.457557L63.1963 0.426745H74.6795ZM58.1896 11.6731L58.0432 11.8148L46.2643 26.4767V26.6199H55.2456L58.1896 11.8148L58.2558 11.7101L58.1896 11.6731Z"/>
         </svg>
       </span>
-      <span>Home</span>
+      <span data-i18n="nav-home">Home</span>
     </button>
 
     <!-- My trips -->
     <button class="bottom-nav-item" data-tab="trips">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="m11.954 12.958-2.573.638-1.104-.829q-.056-.04-.333-.08l-.106.04a.38.38 0 0 0-.262.22.36.36 0 0 0 .02.34l1.112 1.951q.08.14.22.199a.42.42 0 0 0 .297.007l8.467-2.24a.86.86 0 0 0 .548-.415.85.85 0 0 0 .102-.67.75.75 0 0 0-.408-.505.92.92 0 0 0-.665-.068l-2.488.67-3.764-3.53a.54.54 0 0 0-.252-.143.6.6 0 0 0-.302.003l-.115.025a.57.57 0 0 0-.425.347.56.56 0 0 0 .033.543zM4.308 19.5q-.748 0-1.278-.53a1.74 1.74 0 0 1-.53-1.278v-2.74a.71.71 0 0 1 .52-.696 2.6 2.6 0 0 0 1.068-.908Q4.5 12.747 4.5 12t-.412-1.348a2.6 2.6 0 0 0-1.069-.908.713.713 0 0 1-.52-.696v-2.74q.002-.749.53-1.278.53-.53 1.279-.53h15.384q.749 0 1.278.53.53.53.53 1.278v11.384q0 .749-.53 1.278-.53.53-1.278.53zm0-1.5h15.384a.3.3 0 0 0 .221-.087.3.3 0 0 0 .087-.22V6.307a.3.3 0 0 0-.087-.221.3.3 0 0 0-.22-.087H4.307a.3.3 0 0 0-.221.087.3.3 0 0 0-.087.22V8.55a4.1 4.1 0 0 1 1.462 1.462Q6 10.926 6 12q0 1.076-.538 1.988A4.1 4.1 0 0 1 4 15.45v2.242a.3.3 0 0 0 .087.221.3.3 0 0 0 .22.087"/></svg>
-      <span>My trips</span>
+      <span data-i18n="nav-mytrips">My trips</span>
     </button>
 
     <!-- Centre call button -->
@@ -375,19 +375,19 @@
       <button class="bottom-nav-call" id="call-btn-start">
         <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4L14.1 14.5C14.3 14.3 14.7 14.2 15 14.4C16 14.7 17.1 14.9 18.2 14.9C18.7 14.9 19.2 15.3 19.2 15.9V18.9C19.2 19.4 18.8 19.9 18.2 19.9C9.8 19.9 3 13.1 3 4.7C3 4.1 3.4 3.7 4 3.7H7C7.5 3.7 7.9 4.1 7.9 4.7C7.9 5.8 8.1 6.9 8.4 7.9C8.5 8.2 8.4 8.6 8.2 8.8L6.6 10.8Z" fill="white"/></svg>
       </button>
-      <span class="bottom-nav-call-label">Call Sarah</span>
+      <span class="bottom-nav-call-label" data-i18n="nav-callsarah">Call Sarah</span>
     </div>
 
     <!-- Me -->
     <button class="bottom-nav-item" data-tab="me">
       <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20C4 16.686 7.582 14 12 14C16.418 14 20 16.686 20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <span>Me</span>
+      <span data-i18n="nav-me">Me</span>
     </button>
 
     <!-- More -->
     <button class="bottom-nav-item" data-tab="more">
       <svg viewBox="0 0 24 24" fill="none"><path d="M4 6H20M4 12H20M4 18H14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <span>More</span>
+      <span data-i18n="nav-more">More</span>
     </button>
   </nav>
 
@@ -402,7 +402,7 @@
       <div class="incall-info">
         <div class="call-avatar">S</div>
         <div class="incall-details">
-          <div class="incall-name">Sarah · SAS AI</div>
+          <div class="incall-name" data-i18n="incall-name">Sarah · SAS AI</div>
           <div class="incall-duration" id="call-duration">00:00</div>
         </div>
       </div>

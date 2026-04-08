@@ -103,6 +103,81 @@ window.SAS_APP = (function() {
                      now.getMinutes().toString().padStart(2, '0');
   }
 
+  // ═══ TRANSLATIONS ═══
+  const i18n = {
+    en: {
+      'hero-eyebrow':        'Discover the world with SAS',
+      'hero-headline':       'New<br>Destinations',
+      'hero-sub':            'Travel between April 29 – Oct 31',
+      'hero-cta':            'Book by April 14',
+      'sw-from-label':       'From',
+      'sw-from-city':        'Stockholm',
+      'sw-to-label':         'To',
+      'sw-to-value':         'Search',
+      'sw-to-city':          'Destination',
+      'offers-label':        'Offers right now',
+      'offers-sub':          'Stockholm, one way, including taxes and fees',
+      'offer-eyebrow':       'Find the lowest fares',
+      'offer-headline':      'for your next trip',
+      'holidays-headline':   'More vacation for less',
+      'holidays-sub':        'Lower prices when you book flight + hotel together',
+      'holidays-btn':        'Book now',
+      'action-add-booking':  'Add Booking',
+      'action-checkin':      'Check-In',
+      'action-flightstatus': 'Flight Status',
+      'action-feedback':     'Feedback',
+      'nav-home':            'Home',
+      'nav-mytrips':         'My trips',
+      'nav-callsarah':       'Call Sarah',
+      'nav-me':              'Me',
+      'nav-more':            'More',
+      'points-label':        'Points',
+      'incall-name':         'Sarah · SAS AI',
+    },
+    sv: {
+      'hero-eyebrow':        'Upptäck världen med SAS',
+      'hero-headline':       'Nya<br>Destinationer',
+      'hero-sub':            'Res mellan 29 apr – 31 okt',
+      'hero-cta':            'Boka senast 14 april',
+      'sw-from-label':       'Från',
+      'sw-from-city':        'Stockholm',
+      'sw-to-label':         'Till',
+      'sw-to-value':         'Sök',
+      'sw-to-city':          'Destination',
+      'offers-label':        'Erbjudanden just nu',
+      'offers-sub':          'Stockholm, enkel resa, inkl. skatter och avgifter',
+      'offer-eyebrow':       'Hitta de lägsta priserna',
+      'offer-headline':      'för din nästa resa',
+      'holidays-headline':   'Mer semester för mindre',
+      'holidays-sub':        'Lägre priser när du bokar flyg + hotell tillsammans',
+      'holidays-btn':        'Boka nu',
+      'action-add-booking':  'Lägg till bokning',
+      'action-checkin':      'Checka in',
+      'action-flightstatus': 'Flygstatus',
+      'action-feedback':     'Återkoppling',
+      'nav-home':            'Hem',
+      'nav-mytrips':         'Mina resor',
+      'nav-callsarah':       'Ring Sarah',
+      'nav-me':              'Mig',
+      'nav-more':            'Mer',
+      'points-label':        'Poäng',
+      'incall-name':         'Sarah · SAS AI',
+    }
+  };
+
+  function applyTranslations(lang) {
+    const t = i18n[lang] || i18n.en;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    // Elements with HTML content (e.g. <br>)
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      const key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+  }
+
   // ═══ LANGUAGE TOGGLE ═══
   function toggleLang() {
     window.SAS_LANG = (window.SAS_LANG === 'sv') ? 'en' : 'sv';
@@ -110,6 +185,7 @@ window.SAS_APP = (function() {
     const code = document.getElementById('lang-code');
     if (flag) flag.textContent = window.SAS_LANG === 'sv' ? '🇸🇪' : '🇬🇧';
     if (code) code.textContent = window.SAS_LANG === 'sv' ? 'SV' : 'EN';
+    applyTranslations(window.SAS_LANG);
     console.log('[SAS App] Language:', window.SAS_LANG, '→ userId:', window.SAS_CONFIG.USER_ID);
     // Reinit widget so next call uses updated userId
     if (window.SAS_CTC) window.SAS_CTC.reinit();
