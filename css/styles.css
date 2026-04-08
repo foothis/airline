@@ -89,6 +89,31 @@ html, body {
   position: relative;
   z-index: 10;
 }
+.top-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.passenger-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.passenger-points {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+.points-value { font-weight: 700; }
+.points-label { font-weight: 400; opacity: 0.8; font-size: 12px; }
 .nav-btn {
   background: none;
   border: none;
@@ -107,7 +132,7 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
 }
-.logo-svg { height: 24px; width: auto; }
+.logo-svg { height: 22px; width: auto; }
 
 /* ═══ MAIN SCREEN ═══ */
 .screen {
@@ -123,20 +148,92 @@ html, body {
 
 /* ═══ HOME HERO ═══ */
 .home-hero {
-  background: linear-gradient(160deg, var(--sas-blue) 0%, var(--sas-blue-light) 100%);
-  padding: 24px 20px 32px;
+  background: linear-gradient(170deg, var(--sas-blue) 0%, #1a1acc 60%, #2233dd 100%);
+  padding: 20px 20px 0;
   color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
 }
-.hero-greeting {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
+.hero-text {
+  position: relative;
+  z-index: 2;
   margin-bottom: 4px;
 }
-.hero-subtitle {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
+.hero-name {
+  font-size: 28px;
   font-weight: 400;
+  letter-spacing: -0.3px;
+  margin-bottom: 0;
+  opacity: 0.95;
+}
+.hero-welcome {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.hero-plane {
+  position: absolute;
+  bottom: 60px;
+  right: -20px;
+  width: 220px;
+  opacity: 0.7;
+  z-index: 1;
+}
+.plane-svg { width: 100%; height: auto; }
+
+/* Search widget embedded in hero */
+.search-widget {
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin: 16px -4px 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.search-widget-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.sw-field { flex: 1; }
+.sw-field--right { text-align: right; }
+.sw-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.sw-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.sw-value--search { color: var(--sas-blue); }
+.sw-city {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.sw-swap {
+  background: #EEF0FF;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0 8px;
 }
 
 /* ═══ SECTIONS ═══ */
@@ -347,70 +444,88 @@ html, body {
   opacity: 0.6;
 }
 
-/* ═══ BOTTOM BAR ═══ */
-.bottom-bar {
+/* ═══ BOTTOM NAV (SAS style) ═══ */
+.bottom-nav {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   max-width: 420px;
   margin: 0 auto;
   background: white;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: 0 -1px 0 var(--border), 0 -4px 20px rgba(0,0,0,0.06);
   z-index: 50;
-  padding-bottom: env(safe-area-inset-bottom, 0);
-}
-
-/* Idle state */
-.bottom-bar-idle { padding: 16px 20px 20px; }
-.call-prompt {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-end;
+  padding: 6px 0 env(safe-area-inset-bottom, 10px);
+  height: var(--bottom-bar-h);
 }
-.call-prompt-icon {
-  width: 44px;
-  height: 44px;
-  background: #EEF0FF;
-  border-radius: 12px;
+.bottom-nav-item {
+  flex: 1;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 0;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.15s;
+  font-family: inherit;
+}
+.bottom-nav-item svg { width: 22px; height: 22px; }
+.bottom-nav-item span { font-size: 10px; font-weight: 500; }
+.bottom-nav-item.is-active { color: var(--sas-blue); }
+.bottom-nav-item.is-active svg { stroke-width: 2.2; }
+
+/* Centre call button */
+.bottom-nav-call-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  padding-bottom: 4px;
+}
+.bottom-nav-call {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--sas-blue);
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0,0,153,0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-top: -16px;
+  position: relative;
 }
-.call-prompt-icon svg { width: 22px; height: 22px; }
-.call-prompt-text { flex: 1; }
-.call-prompt-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-.call-prompt-subtitle {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-top: 1px;
-}
-.call-btn-start {
-  background: var(--sas-blue);
-  color: white;
-  border: none;
-  border-radius: 22px;
-  padding: 10px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
-  white-space: nowrap;
-}
-.call-btn-start:active {
-  background: var(--sas-blue-dark);
-  transform: scale(0.97);
+.bottom-nav-call:active { transform: scale(0.93); box-shadow: 0 2px 8px rgba(0,0,153,0.25); }
+.bottom-nav-call svg { width: 22px; height: 22px; }
+.bottom-nav-call-label { font-size: 10px; font-weight: 500; color: var(--sas-blue); }
+.bottom-nav-call.is-ringing {
+  animation: ring-pulse 0.8s ease infinite;
 }
 
-/* In-call state */
-.bottom-bar-incall { padding: 10px 16px 16px; }
+/* ═══ IN-CALL BAR (slides up above nav) ═══ */
+.incall-bar {
+  position: fixed;
+  bottom: var(--bottom-bar-h);
+  left: 0; right: 0;
+  max-width: 420px;
+  margin: 0 auto;
+  background: white;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0,0,153,0.08);
+  z-index: 49;
+  padding: 10px 16px 12px;
+  animation: fly-in-up 0.3s cubic-bezier(0.32,0.72,0,1);
+}
 .incall-transcript-row {
-  min-height: 28px;
-  padding: 6px 12px;
+  min-height: 26px;
+  padding: 5px 12px;
   background: #F4F5F9;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -437,19 +552,19 @@ html, body {
   gap: 10px;
 }
 .call-avatar {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   background: var(--sas-blue);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 .incall-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -460,22 +575,22 @@ html, body {
 }
 .incall-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 .incall-btn {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.15s, opacity 0.15s;
+  transition: transform 0.15s;
 }
 .incall-btn:active { transform: scale(0.92); }
-.incall-btn svg { width: 20px; height: 20px; }
+.incall-btn svg { width: 18px; height: 18px; }
 .incall-btn--mute { background: #F3F4F6; color: var(--text-primary); }
 .incall-btn--mute.is-muted { background: var(--sas-red); color: white; }
 .incall-btn--speaker { background: #F3F4F6; color: var(--text-primary); }
@@ -483,8 +598,8 @@ html, body {
 .incall-btn--hangup {
   background: var(--sas-red);
   color: white;
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
 }
 
 /* ═══════════════════════════════════════════════
@@ -1194,7 +1309,7 @@ html, body {
 
 /* Responsive: center on wider screens */
 @media (min-width: 421px) {
-  .status-bar, .app-wrapper, .bottom-bar {
+  .status-bar, .app-wrapper, .bottom-nav, .incall-bar {
     left: 50%;
     right: auto;
     transform: translateX(-50%);

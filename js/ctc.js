@@ -212,9 +212,10 @@ window.SAS_CTC = (function() {
   }
 
   function onCallConnected() {
-    document.getElementById('call-btn-start').classList.remove('is-ringing');
-    document.getElementById('bottom-idle').style.display = 'none';
-    document.getElementById('bottom-incall').style.display = 'block';
+    const callBtn = document.getElementById('call-btn-start');
+    if (callBtn) callBtn.classList.remove('is-ringing');
+    const incallBar = document.getElementById('incall-bar');
+    if (incallBar) incallBar.style.display = 'block';
 
     // Start call timer
     callSeconds = 0;
@@ -232,8 +233,8 @@ window.SAS_CTC = (function() {
   }
 
   function onCallEnded() {
-    document.getElementById('bottom-idle').style.display = 'block';
-    document.getElementById('bottom-incall').style.display = 'none';
+    const incallBar = document.getElementById('incall-bar');
+    if (incallBar) incallBar.style.display = 'none';
 
     clearInterval(callTimer);
     callSeconds = 0;
