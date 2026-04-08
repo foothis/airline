@@ -32,7 +32,7 @@ window.SAS_APP = (function() {
     const pill = document.createElement('div');
     pill.id = 'call-status-pill';
     pill.className = 'call-status-pill';
-    pill.innerHTML = '● On call with Sarah';
+    pill.textContent = 'On call with Sarah';
     document.body.appendChild(pill);
 
     // Bottom nav tabs
